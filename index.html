@@ -1215,6 +1215,108 @@
             border-radius: 50%;
         }
 
+        /* Zone view color variations */
+        .licensed-section[data-view="campaign"] {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            border-color: #e9d5ff;
+            border-left-color: #a855f7;
+        }
+
+        .licensed-section[data-view="campaign"]::before {
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+        }
+
+        .licensed-section[data-view="industries"] {
+            background: linear-gradient(135deg, var(--teal-50) 0%, var(--teal-100) 100%);
+            border-color: var(--teal-100);
+            border-left-color: var(--teal-500);
+        }
+
+        .licensed-section[data-view="industries"]::before {
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 70%);
+        }
+
+        /* Zone header with inline buttons */
+        .zone-header-chip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .zone-header-chip > span {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .zone-header-buttons {
+            display: flex;
+            gap: 4px;
+        }
+
+        .zone-btn {
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text-secondary);
+        }
+
+        .zone-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-1px);
+        }
+
+        .zone-btn.active {
+            background: var(--primary-500);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        /* Expandable notes section */
+        .expandable-section.notes-section {
+            margin-top: 12px;
+            background: #fef3c7;
+            border: 2px solid #fde68a;
+            border-left: 5px solid #f59e0b;
+            border-radius: var(--radius-md);
+            padding: 12px;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.08);
+        }
+
+        /* Notes button in header */
+        .notes-btn {
+            padding: 8px 16px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 8px;
+            color: #f59e0b;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 8px;
+        }
+
+        .notes-btn:hover {
+            background: rgba(245, 158, 11, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .notes-btn.active {
+            background: #f59e0b;
+            color: white;
+            border-color: #d97706;
+        }
+
         .section-label {
             font-size: 13px;
             font-weight: 600;
@@ -2974,6 +3076,23 @@
             font-weight: 500;
         }
 
+        /* Issue Meta Tags */
+        .issue-client {
+            display: inline-flex;
+            padding: 4px 10px;
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--primary-600);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .issue-date {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+        }
+
         /* Modal */
         .modal {
             position: fixed;
@@ -3358,42 +3477,11 @@
                                 <label for="issueTitle">What's the problem? *</label>
                                 <textarea id="issueTitle" rows="3" placeholder="Describe the issue clearly..." required></textarea>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="issueClient">Which client?</label>
-                                    <select id="issueClient">
-                                        <option value="">General (not client-specific)</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="issueCategory">Category</label>
-                                    <select id="issueCategory">
-                                        <option value="ghl">GHL</option>
-                                        <option value="instantly">Instantly</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group">
-                                <label>Priority *</label>
-                                <div class="priority-options">
-                                    <label class="priority-option">
-                                        <input type="radio" name="priority" value="critical">
-                                        <span class="priority-badge critical">Critical</span>
-                                    </label>
-                                    <label class="priority-option">
-                                        <input type="radio" name="priority" value="high" checked>
-                                        <span class="priority-badge high">High</span>
-                                    </label>
-                                    <label class="priority-option">
-                                        <input type="radio" name="priority" value="medium">
-                                        <span class="priority-badge medium">Medium</span>
-                                    </label>
-                                    <label class="priority-option">
-                                        <input type="radio" name="priority" value="low">
-                                        <span class="priority-badge low">Low</span>
-                                    </label>
-                                </div>
+                                <label for="issueClient">Which client?</label>
+                                <select id="issueClient">
+                                    <option value="">General (not client-specific)</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -5315,6 +5403,7 @@
                                         </div>
                                     </div>
                                 ` : ''}
+                                <button class="info-button notes-btn" data-toggle-target="notes" data-card-id="${cardId}">Notes</button>
                                 <button class="btn-add-notes" data-client-id="${clientId}" data-card-id="${cardId}" type="button">
                                     <span>+</span>
                                     <span>Add Notes</span>
@@ -5323,56 +5412,50 @@
                         </header>
 
                         <div class="client-info">
-                            <!-- Unified Button Row -->
-                            <div class="info-buttons-row">
-                                <button class="info-button notes-btn" data-toggle-info="notes-content-${cardId}">Notes</button>
-                                <button class="info-button campaign-btn" data-toggle-info="campaign-content-${cardId}">Campaign</button>
-                                ${targets.length > 0 ? `<button class="info-button industries-btn" data-toggle-info="industries-content-${cardId}">Industries</button>` : ''}
-                            </div>
-
                             <!-- Notes Content (Hidden by default) -->
-                            <div class="info-content" id="notes-content-${cardId}" style="display: none;">
+                            <div class="expandable-section notes-section" id="notes-section-wrapper-${cardId}" style="display: none;">
                                 <div class="client-notes-section" id="notes-section-${cardId}">
                                     <!-- Notes will be rendered here -->
                                 </div>
                             </div>
 
-                            <!-- Campaign Content (Hidden by default) -->
-                            <div class="info-content" id="campaign-content-${cardId}" style="display: none;">
-                                <div class="current-campaign-section">
-                                    <div class="campaign-header">
-                                        <div class="section-label collapsible-label collapsed" data-toggle="campaign-list-${cardId}">
-                                            <span>Current Campaign<span class="collapsible-hint">Click to see</span></span>
-                                        </div>
-                                        <button class="btn-add-campaign" data-client-id="${clientId}" data-card-id="${cardId}" type="button">
-                                            <span>+</span>
-                                            <span>Add</span>
-                                        </button>
-                                    </div>
-                                    <div id="campaign-list-${cardId}" class="collapsible-content collapsed">
-                                        <!-- Campaign items will be rendered here -->
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Industries Content (Hidden by default) -->
-                            ${targets.length > 0 ? `
-                                <div class="info-content" id="industries-content-${cardId}" style="display: none;">
-                                    <div class="targets-section">
-                                        <div class="section-label collapsible-label collapsed" data-toggle="industries-${cardId}">
-                                            <span>Industries<span class="collapsible-hint">Click to see</span></span>
-                                        </div>
-                                        <ul class="targets collapsible-content collapsed" id="industries-${cardId}">
-                                            ${targets.map(t => `<li>${t.charAt(0).toUpperCase() + t.slice(1)}</li>`).join('')}
-                                        </ul>
-                                    </div>
-                                </div>
-                            ` : ''}
-
                             ${licensedStates ? `
-                                <div class="licensed-section">
-                                    <div class="zone-header-chip"><span>Target States</span></div>
-                                    <p class="licensed">${licensedStates}</p>
+                                <div class="licensed-section" id="licensed-section-${cardId}" data-view="states">
+                                    <div class="zone-header-chip">
+                                        <span id="section-title-${cardId}">Target States</span>
+                                        <div class="zone-header-buttons">
+                                            <button class="zone-btn active" data-zone-toggle="states" data-card-id="${cardId}">States</button>
+                                            <button class="zone-btn" data-zone-toggle="campaign" data-card-id="${cardId}">Campaign</button>
+                                            ${targets.length > 0 ? `<button class="zone-btn" data-zone-toggle="industries" data-card-id="${cardId}">Industries</button>` : ''}
+                                        </div>
+                                    </div>
+                                    <div class="zone-content" id="zone-content-${cardId}">
+                                        <p class="licensed" id="states-content-${cardId}">${licensedStates}</p>
+                                        <div class="campaign-content" id="campaign-content-${cardId}" style="display: none;">
+                                            <div class="campaign-header">
+                                                <div class="section-label collapsible-label collapsed" data-toggle="campaign-list-${cardId}">
+                                                    <span>Current Campaign<span class="collapsible-hint">Click to see</span></span>
+                                                </div>
+                                                <button class="btn-add-campaign" data-client-id="${clientId}" data-card-id="${cardId}" type="button">
+                                                    <span>+</span>
+                                                    <span>Add</span>
+                                                </button>
+                                            </div>
+                                            <div id="campaign-list-${cardId}" class="collapsible-content collapsed">
+                                                <!-- Campaign items will be rendered here -->
+                                            </div>
+                                        </div>
+                                        ${targets.length > 0 ? `
+                                            <div class="industries-content" id="industries-content-${cardId}" style="display: none;">
+                                                <div class="section-label collapsible-label collapsed" data-toggle="industries-${cardId}">
+                                                    <span>Industries<span class="collapsible-hint">Click to see</span></span>
+                                                </div>
+                                                <ul class="targets collapsible-content collapsed" id="industries-${cardId}">
+                                                    ${targets.map(t => `<li>${t.charAt(0).toUpperCase() + t.slice(1)}</li>`).join('')}
+                                                </ul>
+                                            </div>
+                                        ` : ''}
+                                    </div>
                                 </div>
                             ` : ''}
                         </div>
@@ -5909,33 +5992,69 @@
             }
         });
 
-        // Handle info button clicks (Notes/Campaign/Industries)
+        // Handle Notes button toggle
         document.addEventListener('click', (e) => {
-            const button = e.target.closest('[data-toggle-info]');
+            const button = e.target.closest('[data-toggle-target="notes"]');
             if (!button) return;
 
-            const contentId = button.getAttribute('data-toggle-info');
-            const content = document.getElementById(contentId);
+            const cardId = button.getAttribute('data-card-id');
+            const notesSection = document.getElementById(`notes-section-wrapper-${cardId}`);
 
-            if (!content) return;
+            if (!notesSection) return;
 
-            // Get all info buttons and content in the same card
-            const card = button.closest('.client-card');
-            const allButtons = card.querySelectorAll('.info-button');
-            const allContent = card.querySelectorAll('.info-content');
-
-            // If clicking the active button, close it
+            // Toggle the notes section
             if (button.classList.contains('active')) {
                 button.classList.remove('active');
-                content.style.display = 'none';
+                notesSection.style.display = 'none';
             } else {
-                // Close all other sections
-                allButtons.forEach(btn => btn.classList.remove('active'));
-                allContent.forEach(c => c.style.display = 'none');
-
-                // Open this section
                 button.classList.add('active');
-                content.style.display = 'block';
+                notesSection.style.display = 'block';
+            }
+        });
+
+        // Handle zone toggle buttons (States/Campaign/Industries)
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest('[data-zone-toggle]');
+            if (!button) return;
+
+            const zone = button.getAttribute('data-zone-toggle');
+            const cardId = button.getAttribute('data-card-id');
+            const licensedSection = document.getElementById(`licensed-section-${cardId}`);
+            const sectionTitle = document.getElementById(`section-title-${cardId}`);
+
+            if (!licensedSection) return;
+
+            // Get all zone buttons in this card
+            const allZoneButtons = licensedSection.querySelectorAll('.zone-btn');
+
+            // Remove active from all buttons
+            allZoneButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active to clicked button
+            button.classList.add('active');
+
+            // Hide all content sections
+            const statesContent = document.getElementById(`states-content-${cardId}`);
+            const campaignContent = document.getElementById(`campaign-content-${cardId}`);
+            const industriesContent = document.getElementById(`industries-content-${cardId}`);
+
+            if (statesContent) statesContent.style.display = 'none';
+            if (campaignContent) campaignContent.style.display = 'none';
+            if (industriesContent) industriesContent.style.display = 'none';
+
+            // Show selected content and update styling
+            if (zone === 'states') {
+                if (statesContent) statesContent.style.display = 'block';
+                licensedSection.setAttribute('data-view', 'states');
+                sectionTitle.textContent = 'Target States';
+            } else if (zone === 'campaign') {
+                if (campaignContent) campaignContent.style.display = 'block';
+                licensedSection.setAttribute('data-view', 'campaign');
+                sectionTitle.textContent = 'Campaign';
+            } else if (zone === 'industries') {
+                if (industriesContent) industriesContent.style.display = 'block';
+                licensedSection.setAttribute('data-view', 'industries');
+                sectionTitle.textContent = 'Industries';
             }
         });
 
@@ -5998,8 +6117,8 @@
             clientSelect.innerHTML = '<option value="">General (not client-specific)</option>';
             clients.forEach(client => {
                 const option = document.createElement('option');
-                option.value = client.name;
-                option.textContent = client.name;
+                option.value = client.businessName;
+                option.textContent = client.businessName;
                 clientSelect.appendChild(option);
             });
         }
@@ -6011,15 +6130,11 @@
             // Reset form
             document.getElementById('issueTitle').value = '';
             document.getElementById('issueClient').value = '';
-            document.getElementById('issueCategory').value = 'ghl';
-            document.querySelector('input[name="priority"][value="high"]').checked = true;
         }
 
         function submitNewIssue() {
             const title = document.getElementById('issueTitle').value.trim();
             const client = document.getElementById('issueClient').value;
-            const category = document.getElementById('issueCategory').value;
-            const priority = document.querySelector('input[name="priority"]:checked').value;
 
             if (!title) {
                 alert('Please describe the issue');
@@ -6030,8 +6145,6 @@
                 id: issuesData.nextId++,
                 title: title,
                 client: client || null,
-                category: category,
-                priority: priority,
                 status: 'open',
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
@@ -6091,13 +6204,7 @@
             stream.innerHTML = filtered.map(issue => {
                 const createdDate = new Date(issue.createdAt);
                 const timeAgo = getTimeAgo(createdDate);
-
-                const priorityColors = {
-                    critical: '#dc2626',
-                    high: '#ea580c',
-                    medium: '#ca8a04',
-                    low: '#16a34a'
-                };
+                const dateStr = createdDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
                 const statusLabels = {
                     open: 'Open',
@@ -6105,19 +6212,12 @@
                     resolved: 'Resolved'
                 };
 
-                const categoryLabels = {
-                    ghl: 'GHL',
-                    instantly: 'Instantly',
-                    other: 'Other'
-                };
-
                 return `
                     <div class="issue-card">
                         <div class="issue-card-header">
                             <div class="issue-meta">
-                                <span class="priority-badge ${issue.priority}">${issue.priority.toUpperCase()}</span>
-                                <span class="issue-category">${categoryLabels[issue.category]}</span>
-                                ${issue.client ? `<span class="issue-client">→ ${issue.client}</span>` : ''}
+                                ${issue.client ? `<span class="issue-client">${issue.client}</span>` : '<span class="issue-client">General</span>'}
+                                <span class="issue-date">${dateStr}</span>
                             </div>
                             <div class="issue-actions">
                                 <select class="status-select" onchange="updateIssueStatus(${issue.id}, this.value)">
@@ -6186,8 +6286,8 @@
                     clientFilter.innerHTML = '<option value="all">All Clients</option>';
                     clients.forEach(client => {
                         const option = document.createElement('option');
-                        option.value = client.name;
-                        option.textContent = client.name;
+                        option.value = client.businessName;
+                        option.textContent = client.businessName;
                         clientFilter.appendChild(option);
                     });
                 }
