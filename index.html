@@ -2638,60 +2638,6 @@
     </div>
 
     <div class="app-layout">
-        <!-- ========== SIDEBAR NAVIGATION ========== -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h1 class="brand">LeadForce<span class="dot">.</span></h1>
-            </div>
-
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <div class="nav-section-title">Main</div>
-                    <button class="nav-item" data-page="dashboard">
-                        <span class="nav-item-icon">📊</span>
-                        <span>Dashboard</span>
-                    </button>
-                    <button class="nav-item active" data-page="clients">
-                        <span class="nav-item-icon">👥</span>
-                        <span>Clients</span>
-                        <span class="nav-item-badge" id="clients-count">16</span>
-                    </button>
-                    <button class="nav-item" data-page="analytics">
-                        <span class="nav-item-icon">📈</span>
-                        <span>Performance</span>
-                    </button>
-                </div>
-
-                <div class="nav-section">
-                    <div class="nav-section-title">Tools</div>
-                    <button class="nav-item" data-page="campaigns">
-                        <span class="nav-item-icon">🎯</span>
-                        <span>Campaigns</span>
-                    </button>
-                    <button class="nav-item" data-page="reports">
-                        <span class="nav-item-icon">📋</span>
-                        <span>Reports</span>
-                    </button>
-                    <button class="nav-item" data-page="team">
-                        <span class="nav-item-icon">⚡</span>
-                        <span>Team</span>
-                    </button>
-                </div>
-
-                <div class="nav-section">
-                    <div class="nav-section-title">Settings</div>
-                    <button class="nav-item" data-page="integrations">
-                        <span class="nav-item-icon">🔌</span>
-                        <span>Integrations</span>
-                    </button>
-                    <button class="nav-item" data-page="settings">
-                        <span class="nav-item-icon">⚙️</span>
-                        <span>Settings</span>
-                    </button>
-                </div>
-            </nav>
-        </aside>
-
         <!-- ========== MAIN CONTENT AREA ========== -->
         <div class="main-content">
             <!-- Enterprise Command Bar -->
@@ -2707,7 +2653,7 @@
 
                     <div class="command-bar-center">
                         <div class="global-search">
-                            <span class="global-search-icon">🔍</span>
+                            <span class="global-search-icon">⌕</span>
                             <input
                                 class="global-search-input"
                                 type="search"
@@ -2720,15 +2666,11 @@
                     <div class="command-bar-right">
                         <span id="lastUpdatedDisplay" class="last-updated">Stats updated just now</span>
                         <button id="sortPriorityBtn" class="sort-btn" type="button" aria-label="Sort by priority" title="Sort clients by how far behind they are on goals">
-                            <span>⚡</span>
+                            <span>↓</span>
                             <span>Priority</span>
                         </button>
                         <button id="refreshStatsBtn" class="refresh-btn" type="button" aria-label="Refresh stats" title="Refresh appointment stats">
-                            <span class="refresh-icon">🔄</span>
-                        </button>
-                        <button class="notifications-btn" type="button" aria-label="Notifications">
-                            <span>🔔</span>
-                            <span class="notification-badge">3</span>
+                            <span class="refresh-icon">↻</span>
                         </button>
                         <button class="user-menu-btn" type="button" aria-label="User menu">
                             <div class="user-avatar">NT</div>
@@ -2745,21 +2687,18 @@
                         <!-- Today's Metrics Dashboard -->
                         <div class="metrics-dashboard" id="metricsDashboard">
                             <div class="dashboard-card">
-                                <div class="dashboard-icon">📈</div>
                                 <div class="dashboard-content">
                                     <div class="dashboard-number" id="totalNewLeads">—</div>
                                     <div class="dashboard-label">New Leads Today</div>
                                 </div>
                             </div>
                             <div class="dashboard-card">
-                                <div class="dashboard-icon">✅</div>
                                 <div class="dashboard-content">
                                     <div class="dashboard-number" id="totalBookedToday">—</div>
                                     <div class="dashboard-label">Booked Today</div>
                                 </div>
                             </div>
                             <div class="dashboard-card">
-                                <div class="dashboard-icon">🎯</div>
                                 <div class="dashboard-content">
                                     <div class="dashboard-number" id="totalNotConverted">—</div>
                                     <div class="dashboard-label">Total Not Converted</div>
