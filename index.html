@@ -2626,8 +2626,8 @@
         /* Sidebar Updates */
         .sidebar {
             width: 180px;
-            background: #0d1117;
-            border-right: 1px solid #21262d;
+            background: #ffffff;
+            border-right: 1px solid #e5e7eb;
             display: flex;
             flex-direction: column;
             z-index: var(--z-fixed);
@@ -2635,11 +2635,11 @@
 
         .sidebar-header {
             padding: 24px 20px;
-            border-bottom: 1px solid #21262d;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .sidebar-header .brand {
-            color: #f0f6fc;
+            color: var(--text-primary);
             font-size: 20px;
         }
 
@@ -2662,7 +2662,7 @@
             background: transparent;
             border: none;
             border-radius: 6px;
-            color: #9ea7b3;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -2671,13 +2671,13 @@
         }
 
         .nav-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: #f0f6fc;
+            background: #f3f4f6;
+            color: var(--text-primary);
         }
 
         .nav-item.active {
-            background: rgba(13, 148, 136, 0.15);
-            color: var(--primary-400);
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--primary-600);
         }
 
         .nav-item.active::before {
@@ -3368,9 +3368,8 @@
                                 <div class="form-group">
                                     <label for="issueCategory">Category</label>
                                     <select id="issueCategory">
-                                        <option value="tech">Technical</option>
-                                        <option value="process">Process</option>
-                                        <option value="client_request">Client Request</option>
+                                        <option value="ghl">GHL</option>
+                                        <option value="instantly">Instantly</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </div>
@@ -6012,7 +6011,7 @@
             // Reset form
             document.getElementById('issueTitle').value = '';
             document.getElementById('issueClient').value = '';
-            document.getElementById('issueCategory').value = 'tech';
+            document.getElementById('issueCategory').value = 'ghl';
             document.querySelector('input[name="priority"][value="high"]').checked = true;
         }
 
@@ -6107,9 +6106,8 @@
                 };
 
                 const categoryLabels = {
-                    tech: 'Technical',
-                    process: 'Process',
-                    client_request: 'Client Request',
+                    ghl: 'GHL',
+                    instantly: 'Instantly',
                     other: 'Other'
                 };
 
