@@ -3129,14 +3129,37 @@
                 const data = await response.json();
                 const opportunities = data.opportunities || [];
 
-                // Calculate EST today start (handle EST/EDT automatically)
+                // Calculate EST/EDT today start (always uses America/New_York timezone)
                 const now = new Date();
-                const isDST = now.getMonth() > 2 && now.getMonth() < 10; // Rough DST check
-                const estOffset = isDST ? 4 : 5; // EDT = -4, EST = -5
-                const estNow = new Date(now.getTime() - (estOffset * 60 * 60 * 1000));
-                const estTodayStart = new Date(estNow);
-                estTodayStart.setHours(0, 0, 0, 0);
-                const utcTodayStart = new Date(estTodayStart.getTime() + (estOffset * 60 * 60 * 1000));
+
+                // Get today's date in Eastern timezone as ISO string
+                const estString = now.toLocaleString('en-US', {
+                    timeZone: 'America/New_York',
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                });
+
+                // Parse: "MM/DD/YYYY, HH:mm:ss"
+                const [datePart] = estString.split(', ');
+                const [month, day, year] = datePart.split('/');
+
+                // Create Date object for midnight Eastern time
+                // Use a reliable method: create the date string and let browser parse it
+                const midnightEST = new Date(`${year}-${month}-${day}T00:00:00-05:00`); // EST offset
+                const midnightEDT = new Date(`${year}-${month}-${day}T00:00:00-04:00`); // EDT offset
+
+                // Determine which offset is currently active
+                const nowEST = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+                const nowUTC = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+                const currentOffset = (nowUTC - nowEST) / 3600000; // Hours difference
+
+                // Use the correct midnight based on current DST status
+                const utcTodayStart = currentOffset === 5 ? midnightEST : midnightEDT;
 
                 // Count metrics from GHL
                 let newLeadsToday = 0;
