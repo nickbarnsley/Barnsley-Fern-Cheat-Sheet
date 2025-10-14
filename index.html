@@ -2620,6 +2620,574 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ========== ISSUE LOG STYLES ========== */
+
+        /* Sidebar Updates */
+        .sidebar {
+            width: 180px;
+            background: #0d1117;
+            border-right: 1px solid #21262d;
+            display: flex;
+            flex-direction: column;
+            z-index: var(--z-fixed);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .sidebar-header .brand {
+            color: #f0f6fc;
+            font-size: 20px;
+        }
+
+        .sidebar-header .dot {
+            color: var(--primary-500);
+        }
+
+        .sidebar-nav {
+            padding: 16px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            color: #9ea7b3;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #f0f6fc;
+        }
+
+        .nav-item.active {
+            background: rgba(13, 148, 136, 0.15);
+            color: var(--primary-400);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            background: var(--primary-500);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .nav-icon {
+            flex-shrink: 0;
+        }
+
+        /* Issue Log Header */
+        .issue-log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .issue-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .issue-search {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .issue-search .search-icon {
+            position: absolute;
+            left: 12px;
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .issue-search-input {
+            padding: 10px 12px 10px 36px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--surface);
+            font-size: 14px;
+            width: 240px;
+            transition: all 0.2s;
+        }
+
+        .issue-search-input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .issue-filter {
+            padding: 10px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: var(--surface);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .issue-filter:hover {
+            border-color: var(--border-medium);
+        }
+
+        .issue-filter:focus {
+            outline: none;
+            border-color: var(--primary-500);
+        }
+
+        .btn-new-issue {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-new-issue:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        /* Issue Stream */
+        .issue-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-size: 15px;
+            color: var(--text-tertiary);
+        }
+
+        /* Issue Card */
+        .issue-card {
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 20px 24px;
+            transition: all 0.2s;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--border-medium);
+        }
+
+        .issue-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .issue-card-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .issue-number {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+        }
+
+        .issue-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 8px 0;
+            line-height: 1.4;
+        }
+
+        .issue-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+        }
+
+        .issue-reporter {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .issue-status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .issue-status-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .issue-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Priority Badges */
+        .priority-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .priority-badge.critical {
+            background: rgba(220, 38, 38, 0.1);
+            color: #dc2626;
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .priority-badge.high {
+            background: rgba(234, 88, 12, 0.1);
+            color: #ea580c;
+            border: 1px solid rgba(234, 88, 12, 0.2);
+        }
+
+        .priority-badge.medium {
+            background: rgba(202, 138, 4, 0.1);
+            color: #ca8a04;
+            border: 1px solid rgba(202, 138, 4, 0.2);
+        }
+
+        .priority-badge.low {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16a34a;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge.open {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .status-badge.in_progress {
+            background: rgba(202, 138, 4, 0.1);
+            color: #ca8a04;
+        }
+
+        .status-badge.resolved {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16a34a;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Client Tag */
+        .client-tag {
+            display: inline-flex;
+            padding: 4px 10px;
+            background: rgba(13, 148, 136, 0.08);
+            color: var(--primary-600);
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: var(--z-modal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--surface);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.2s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--text-tertiary);
+            cursor: pointer;
+            padding: 4px 8px;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            padding: 24px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            padding: 20px 24px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-group textarea,
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            background: var(--bg-secondary);
+            transition: all 0.2s;
+        }
+
+        .form-group textarea:focus,
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .priority-options {
+            display: flex;
+            gap: 12px;
+        }
+
+        .priority-option {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        .priority-option input {
+            display: none;
+        }
+
+        .priority-option .priority-badge {
+            display: block;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+
+        .priority-option input:checked + .priority-badge {
+            opacity: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .btn-action {
+            padding: 8px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border-light);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-action:hover {
+            background: var(--bg-secondary);
+            border-color: var(--border-medium);
+        }
+
+        .btn-action.resolve {
+            background: rgba(22, 163, 74, 0.1);
+            color: #16a34a;
+            border-color: rgba(22, 163, 74, 0.2);
+        }
+
+        .btn-action.resolve:hover {
+            background: rgba(22, 163, 74, 0.15);
+        }
     </style>
 </head>
 <body>
@@ -2638,6 +3206,33 @@
     </div>
 
     <div class="app-layout">
+        <!-- ========== SIDEBAR NAVIGATION ========== -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="brand">LeadForce<span class="dot">.</span></h1>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-page="clients">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Clients</span>
+                </button>
+                <button class="nav-item" data-page="issues">
+                    <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Issue Log</span>
+                </button>
+            </nav>
+        </aside>
+
         <!-- ========== MAIN CONTENT AREA ========== -->
         <div class="main-content">
             <!-- Enterprise Command Bar -->
@@ -2712,9 +3307,101 @@
                     </div>
                 </div>
 
-                <!-- Placeholder for other pages -->
-                <div id="page-other" class="page-content" style="display: none;">
-                    <!-- Dynamic content for other pages -->
+                <!-- Issue Log Page -->
+                <div id="page-issues" class="page-content" style="display: none;">
+                    <div class="container">
+                        <!-- Issue Log Header -->
+                        <div class="issue-log-header">
+                            <h1 class="page-title">Issue Log</h1>
+                            <div class="issue-controls">
+                                <div class="issue-search">
+                                    <span class="search-icon">⌕</span>
+                                    <input type="search" id="issueSearch" placeholder="Search issues..." class="issue-search-input">
+                                </div>
+                                <select id="statusFilter" class="issue-filter">
+                                    <option value="all">All Status</option>
+                                    <option value="open">Open</option>
+                                    <option value="in_progress">In Progress</option>
+                                    <option value="resolved">Resolved</option>
+                                </select>
+                                <select id="clientFilter" class="issue-filter">
+                                    <option value="all">All Clients</option>
+                                </select>
+                                <button id="newIssueBtn" class="btn-new-issue">
+                                    <span>+</span>
+                                    <span>New Issue</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Issue Stream -->
+                        <div id="issueStream" class="issue-stream">
+                            <div class="empty-state">
+                                <div class="empty-icon">✓</div>
+                                <h3>No issues yet</h3>
+                                <p>Click "+ New Issue" to report your first problem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Issue Modal -->
+                <div id="newIssueModal" class="modal" style="display: none;">
+                    <div class="modal-overlay"></div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Report New Issue</h2>
+                            <button class="modal-close" onclick="closeNewIssueModal()">×</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="issueTitle">What's the problem? *</label>
+                                <textarea id="issueTitle" rows="3" placeholder="Describe the issue clearly..." required></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="issueClient">Which client?</label>
+                                    <select id="issueClient">
+                                        <option value="">General (not client-specific)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="issueCategory">Category</label>
+                                    <select id="issueCategory">
+                                        <option value="tech">Technical</option>
+                                        <option value="process">Process</option>
+                                        <option value="client_request">Client Request</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Priority *</label>
+                                <div class="priority-options">
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="critical">
+                                        <span class="priority-badge critical">Critical</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="high" checked>
+                                        <span class="priority-badge high">High</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="medium">
+                                        <span class="priority-badge medium">Medium</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="low">
+                                        <span class="priority-badge low">Low</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="closeNewIssueModal()" class="btn-secondary">Cancel</button>
+                            <button onclick="submitNewIssue()" class="btn-primary">Submit Issue</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -5286,6 +5973,189 @@
             }
         });
 
+        // ============= ISSUE LOG DATA MODEL =============
+        const ISSUE_STORAGE_KEY = 'leadforce_issues';
+        let issuesData = { issues: [], nextId: 1 };
+
+        function loadIssues() {
+            const stored = localStorage.getItem(ISSUE_STORAGE_KEY);
+            if (stored) {
+                issuesData = JSON.parse(stored);
+            }
+            return issuesData.issues;
+        }
+
+        function saveIssues() {
+            localStorage.setItem(ISSUE_STORAGE_KEY, JSON.stringify(issuesData));
+        }
+
+        // ============= ISSUE LOG UI FUNCTIONS =============
+        function openNewIssueModal() {
+            const modal = document.getElementById('newIssueModal');
+            modal.style.display = 'flex';
+
+            // Populate client dropdown
+            const clientSelect = document.getElementById('issueClient');
+            clientSelect.innerHTML = '<option value="">General (not client-specific)</option>';
+            clients.forEach(client => {
+                const option = document.createElement('option');
+                option.value = client.name;
+                option.textContent = client.name;
+                clientSelect.appendChild(option);
+            });
+        }
+
+        function closeNewIssueModal() {
+            const modal = document.getElementById('newIssueModal');
+            modal.style.display = 'none';
+
+            // Reset form
+            document.getElementById('issueTitle').value = '';
+            document.getElementById('issueClient').value = '';
+            document.getElementById('issueCategory').value = 'tech';
+            document.querySelector('input[name="priority"][value="high"]').checked = true;
+        }
+
+        function submitNewIssue() {
+            const title = document.getElementById('issueTitle').value.trim();
+            const client = document.getElementById('issueClient').value;
+            const category = document.getElementById('issueCategory').value;
+            const priority = document.querySelector('input[name="priority"]:checked').value;
+
+            if (!title) {
+                alert('Please describe the issue');
+                return;
+            }
+
+            const newIssue = {
+                id: issuesData.nextId++,
+                title: title,
+                client: client || null,
+                category: category,
+                priority: priority,
+                status: 'open',
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            issuesData.issues.unshift(newIssue);
+            saveIssues();
+            closeNewIssueModal();
+            renderIssues();
+        }
+
+        function updateIssueStatus(issueId, newStatus) {
+            const issue = issuesData.issues.find(i => i.id === issueId);
+            if (issue) {
+                issue.status = newStatus;
+                issue.updatedAt = new Date().toISOString();
+                saveIssues();
+                renderIssues();
+            }
+        }
+
+        function deleteIssue(issueId) {
+            if (confirm('Are you sure you want to delete this issue?')) {
+                issuesData.issues = issuesData.issues.filter(i => i.id !== issueId);
+                saveIssues();
+                renderIssues();
+            }
+        }
+
+        function renderIssues() {
+            const issues = loadIssues();
+            const stream = document.getElementById('issueStream');
+
+            // Apply filters
+            const statusFilter = document.getElementById('statusFilter').value;
+            const clientFilter = document.getElementById('clientFilter').value;
+            const searchQuery = document.getElementById('issueSearch').value.toLowerCase();
+
+            let filtered = issues.filter(issue => {
+                const matchesStatus = statusFilter === 'all' || issue.status === statusFilter;
+                const matchesClient = clientFilter === 'all' || issue.client === clientFilter;
+                const matchesSearch = !searchQuery || issue.title.toLowerCase().includes(searchQuery);
+                return matchesStatus && matchesClient && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                stream.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">✓</div>
+                        <h3>No issues found</h3>
+                        <p>${issues.length === 0 ? 'Click "+ New Issue" to report your first problem' : 'Try adjusting your filters'}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            stream.innerHTML = filtered.map(issue => {
+                const createdDate = new Date(issue.createdAt);
+                const timeAgo = getTimeAgo(createdDate);
+
+                const priorityColors = {
+                    critical: '#dc2626',
+                    high: '#ea580c',
+                    medium: '#ca8a04',
+                    low: '#16a34a'
+                };
+
+                const statusLabels = {
+                    open: 'Open',
+                    in_progress: 'In Progress',
+                    resolved: 'Resolved'
+                };
+
+                const categoryLabels = {
+                    tech: 'Technical',
+                    process: 'Process',
+                    client_request: 'Client Request',
+                    other: 'Other'
+                };
+
+                return `
+                    <div class="issue-card">
+                        <div class="issue-card-header">
+                            <div class="issue-meta">
+                                <span class="priority-badge ${issue.priority}">${issue.priority.toUpperCase()}</span>
+                                <span class="issue-category">${categoryLabels[issue.category]}</span>
+                                ${issue.client ? `<span class="issue-client">→ ${issue.client}</span>` : ''}
+                            </div>
+                            <div class="issue-actions">
+                                <select class="status-select" onchange="updateIssueStatus(${issue.id}, this.value)">
+                                    <option value="open" ${issue.status === 'open' ? 'selected' : ''}>Open</option>
+                                    <option value="in_progress" ${issue.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+                                    <option value="resolved" ${issue.status === 'resolved' ? 'selected' : ''}>Resolved</option>
+                                </select>
+                                <button class="btn-action" onclick="deleteIssue(${issue.id})" title="Delete">×</button>
+                            </div>
+                        </div>
+                        <div class="issue-title">${escapeHtml(issue.title)}</div>
+                        <div class="issue-footer">
+                            <span class="status-badge ${issue.status}">${statusLabels[issue.status]}</span>
+                            <span class="issue-timestamp">${timeAgo}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function getTimeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+
+            if (seconds < 60) return 'Just now';
+            if (seconds < 3600) return `${Math.floor(seconds / 60)}m ago`;
+            if (seconds < 86400) return `${Math.floor(seconds / 3600)}h ago`;
+            if (seconds < 604800) return `${Math.floor(seconds / 86400)}d ago`;
+            return date.toLocaleDateString();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // ============= PAGE NAVIGATION =============
         let currentPage = 'clients';
 
@@ -5301,40 +6171,34 @@
             // Update current page
             currentPage = pageName;
 
-            // Show/hide appropriate page
+            // Show/hide appropriate pages
             const clientsPage = document.getElementById('page-clients');
-            const otherPage = document.getElementById('page-other');
+            const issuesPage = document.getElementById('page-issues');
 
             if (pageName === 'clients') {
                 clientsPage.style.display = 'block';
-                otherPage.style.display = 'none';
-            } else {
+                if (issuesPage) issuesPage.style.display = 'none';
+            } else if (pageName === 'issues') {
                 clientsPage.style.display = 'none';
-                otherPage.style.display = 'block';
-                showComingSoonPage(pageName);
+                if (issuesPage) {
+                    issuesPage.style.display = 'block';
+                    renderIssues();
+                    // Populate client filter
+                    const clientFilter = document.getElementById('clientFilter');
+                    clientFilter.innerHTML = '<option value="all">All Clients</option>';
+                    clients.forEach(client => {
+                        const option = document.createElement('option');
+                        option.value = client.name;
+                        option.textContent = client.name;
+                        clientFilter.appendChild(option);
+                    });
+                }
             }
         }
 
-        function showComingSoonPage(pageName) {
-            const otherPage = document.getElementById('page-other');
-            const pageTitle = pageName.charAt(0).toUpperCase() + pageName.slice(1);
-
-            otherPage.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; padding: 40px;">
-                    <div style="font-size: 64px; margin-bottom: 24px;">🚀</div>
-                    <h2 style="font-size: 32px; margin-bottom: 16px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">${pageTitle} Page</h2>
-                    <p style="color: var(--text-secondary); font-size: 18px; max-width: 500px; margin-bottom: 32px;">
-                        This feature is coming soon! We're building an amazing ${pageName} experience for you.
-                    </p>
-                    <button class="btn btn-primary" onclick="switchPage('clients')">
-                        <span>← Back to Clients</span>
-                    </button>
-                </div>
-            `;
-        }
-
-        // Wire up sidebar navigation
+        // Wire up sidebar navigation and issue log controls
         document.addEventListener('DOMContentLoaded', function() {
+            // Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', () => {
                     const page = item.getAttribute('data-page');
@@ -5343,6 +6207,39 @@
                     }
                 });
             });
+
+            // Issue Log controls
+            const newIssueBtn = document.getElementById('newIssueBtn');
+            if (newIssueBtn) {
+                newIssueBtn.addEventListener('click', openNewIssueModal);
+            }
+
+            const issueSearch = document.getElementById('issueSearch');
+            if (issueSearch) {
+                issueSearch.addEventListener('input', renderIssues);
+            }
+
+            const statusFilter = document.getElementById('statusFilter');
+            if (statusFilter) {
+                statusFilter.addEventListener('change', renderIssues);
+            }
+
+            const clientFilter = document.getElementById('clientFilter');
+            if (clientFilter) {
+                clientFilter.addEventListener('change', renderIssues);
+            }
+
+            // Modal close on overlay click
+            const modal = document.getElementById('newIssueModal');
+            if (modal) {
+                const overlay = modal.querySelector('.modal-overlay');
+                if (overlay) {
+                    overlay.addEventListener('click', closeNewIssueModal);
+                }
+            }
+
+            // Load issues data on startup
+            loadIssues();
         });
 
         // Initial render with Airtable data
