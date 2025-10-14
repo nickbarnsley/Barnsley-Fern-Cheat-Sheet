@@ -1053,15 +1053,15 @@
         }
 
         .business-name {
-            font-size: var(--text-xl);
-            font-weight: var(--font-extrabold);
+            font-size: 24px;
+            font-weight: 600;
             background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 50%, var(--emerald-600) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             margin: 0 0 8px 0;
-            line-height: 1.1;
+            line-height: 1.2;
             position: relative;
             padding-left: 12px;
         }
@@ -1216,10 +1216,12 @@
         }
 
         .section-label {
-            font-size: 12px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -1434,78 +1436,52 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
-            padding: 16px 20px;
+            padding: 20px 24px;
             background: linear-gradient(135deg, #dc5a4b 0%, #c65147 50%, #a8423c 100%);
-            border: 2px solid #e8998f;
+            border: 1px solid rgba(232, 153, 143, 0.3);
             border-radius: var(--radius-lg);
             font-size: 13px;
             font-weight: 600;
             color: #ffffff;
             text-align: center;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
             box-shadow:
-                0 0 13px rgba(214, 0, 0, 0.076),
-                0 0 26px rgba(214, 0, 0, 0.052),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
+                0 2px 8px rgba(214, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
-        }
-
-        .metrics-badge::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.15) 50%,
-                transparent 70%
-            );
-            animation: hammer-shine 5s linear infinite;
         }
 
         .metrics-badge:hover {
             box-shadow:
-                0 0 19px rgba(214, 0, 0, 0.10),
-                0 0 38px rgba(214, 0, 0, 0.064),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+                0 4px 12px rgba(214, 0, 0, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
 
         .metric-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             position: relative;
             z-index: 1;
         }
 
-        .metric-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 30px;
-            width: 1px;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
         .metric-number {
-            font-size: 24px;
-            font-weight: 900;
+            font-size: 28px;
+            font-weight: 700;
             line-height: 1;
+            letter-spacing: -0.01em;
         }
 
         .metric-label-text {
             font-size: 11px;
-            font-weight: 600;
-            opacity: 0.9;
+            font-weight: 500;
+            opacity: 0.85;
             line-height: 1.2;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .setter-badge {
@@ -4133,7 +4109,7 @@
             }
 
             try {
-                metricsEl.textContent = '🔄 Loading metrics...';
+                metricsEl.textContent = 'Loading...';
                 metricsEl.style.display = 'flex';
 
                 const metrics = await fetchTodayMetrics(client);
@@ -4144,25 +4120,25 @@
                     metricsEl.innerHTML = `
                         <div class="metric-item">
                             <span class="metric-number">${metrics.newLeadsToday}</span>
-                            <span class="metric-label-text">Leads Today</span>
+                            <span class="metric-label-text">LEADS TODAY</span>
                         </div>
                         <div class="metric-item">
                             <span class="metric-number">${metrics.bookedToday}</span>
-                            <span class="metric-label-text">Booked Today</span>
+                            <span class="metric-label-text">BOOKED TODAY</span>
                         </div>
                         <div class="metric-item">
                             <span class="metric-number">${metrics.totalInHammer}</span>
-                            <span class="metric-label-text">Total Leads <strong>NOT</strong> Converted Yet</span>
+                            <span class="metric-label-text">NOT CONVERTED</span>
                         </div>
                     `;
                     metricsEl.style.display = 'flex';
                 } else {
-                    metricsEl.textContent = '⚠️ API Error';
+                    metricsEl.textContent = 'Error';
                     metricsEl.style.display = 'flex';
                 }
             } catch (error) {
                 console.error(`[GHL Metrics] Failed to render metrics for ${client.businessName}:`, error);
-                metricsEl.textContent = '❌ Error';
+                metricsEl.textContent = 'Error';
                 metricsEl.style.display = 'flex';
             }
         }
@@ -4492,8 +4468,8 @@
                             <li data-campaign-index="${index}">
                                 <span class="campaign-text">${campaign}</span>
                                 <span class="campaign-actions">
-                                    <button class="campaign-edit-btn" data-client-id="${clientId}" data-card-id="${cardId}" data-campaign-index="${index}" title="Edit campaign">✏️</button>
-                                    <button class="campaign-delete-btn" data-client-id="${clientId}" data-card-id="${cardId}" data-campaign-index="${index}" title="Delete campaign">🗑️</button>
+                                    <button class="campaign-edit-btn" data-client-id="${clientId}" data-card-id="${cardId}" data-campaign-index="${index}" title="Edit campaign">Edit</button>
+                                    <button class="campaign-delete-btn" data-client-id="${clientId}" data-card-id="${cardId}" data-campaign-index="${index}" title="Delete campaign">×</button>
                                 </span>
                             </li>
                         `).join('')}
@@ -4715,7 +4691,7 @@
                                     </div>
                                 ` : ''}
                                 <button class="btn-add-notes" data-client-id="${clientId}" data-card-id="${cardId}" type="button">
-                                    <span>📝</span>
+                                    <span>+</span>
                                     <span>Add Notes</span>
                                 </button>
                             </div>
@@ -4782,7 +4758,7 @@
                             </div>
                             ${client.ghlLocationId ? `
                             <div class="metrics-badge" id="metrics-${cardId}" data-location-id="${client.ghlLocationId}">
-                                🔄 Loading metrics...
+                                Loading...
                             </div>
                             ` : ''}
                         </div>
