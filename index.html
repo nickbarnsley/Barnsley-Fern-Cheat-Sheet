@@ -641,6 +641,9 @@
 
         .popover {
             position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
             z-index: 1000;
             background: #fff;
             border: 1px solid var(--border);
@@ -650,7 +653,6 @@
             max-height: 300px;
             overflow: auto;
             padding: 6px;
-            transform: translateY(8px);
         }
 
         .popover-item {
@@ -1028,10 +1030,9 @@
         }
 
         .card-head {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: start;
-            gap: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             margin-bottom: 20px;
             padding-bottom: 16px;
             border-bottom: 1px solid var(--border-light);
@@ -1039,6 +1040,13 @@
             padding: 12px;
             margin: -12px -12px 16px -12px;
             border-radius: 8px 8px 0 0;
+        }
+
+        .card-head-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            gap: 16px;
         }
 
         .card-head-left {
@@ -1240,16 +1248,8 @@
         .zone-header-chip {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             margin-bottom: 10px;
-        }
-
-        .zone-header-chip > span {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
         }
 
         .zone-header-buttons {
@@ -1315,6 +1315,21 @@
             background: #f59e0b;
             color: white;
             border-color: #d97706;
+        }
+
+        /* Header notes section */
+        .header-notes-section {
+            background: #fef3c7;
+            border: 2px solid #fde68a;
+            border-left: 5px solid #f59e0b;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+
+        .header-notes-section .client-notes-section {
+            max-height: 200px;
+            overflow-y: auto;
         }
 
         .section-label {
@@ -2743,10 +2758,19 @@
         .sidebar-header .brand {
             color: var(--text-primary);
             font-size: 20px;
+            margin: 0 0 4px 0;
         }
 
         .sidebar-header .dot {
             color: var(--primary-500);
+        }
+
+        .brand-subtitle {
+            font-size: 10px;
+            color: var(--text-tertiary);
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 0.02em;
         }
 
         .sidebar-nav {
@@ -3328,7 +3352,8 @@
         <!-- ========== SIDEBAR NAVIGATION ========== -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1 class="brand">LeadForce<span class="dot">.</span></h1>
+                <h1 class="brand">Cheat<span class="dot"> </span>Sheet</h1>
+                <p class="brand-subtitle">a tool by Barnsley Fern</p>
             </div>
 
             <nav class="sidebar-nav">
@@ -5370,13 +5395,14 @@
                 return `
                     <div class="client-card" id="${cardId}" data-setter="${setterAttr}" data-client-id="${clientId}">
                         <header class="card-head">
-                            <div class="card-head-left">
-                                <h2 class="business-name">${businessName}</h2>
-                                ${address ? `<div class="info-line address">${address}</div>` : ''}
-                                <div class="timezone-info">Timezone: ${client.timezone || '<span style="color: var(--text-tertiary);">—</span>'}</div>
-                                ${client.setter ? `<div class="setter-info">Setter: ${client.setter}</div>` : ''}
-                            </div>
-                            <div class="card-head-right">
+                            <div class="card-head-row">
+                                <div class="card-head-left">
+                                    <h2 class="business-name">${businessName}</h2>
+                                    ${address ? `<div class="info-line address">${address}</div>` : ''}
+                                    <div class="timezone-info">Timezone: ${client.timezone || '<span style="color: var(--text-tertiary);">—</span>'}</div>
+                                    ${client.setter ? `<div class="setter-info">Setter: ${client.setter}</div>` : ''}
+                                </div>
+                                <div class="card-head-right">
                                 <div class="owner-block">
                                     ${client.ownerName ? `<div class="owner-name">${client.ownerName}</div>` : ''}
                                     ${client.ownerPhone ? `<div>${client.ownerPhone}</div>` : ''}
@@ -5408,21 +5434,21 @@
                                     <span>+</span>
                                     <span>Add Notes</span>
                                 </button>
+                                </div>
                             </div>
-                        </header>
-
-                        <div class="client-info">
-                            <!-- Notes Content (Hidden by default) -->
-                            <div class="expandable-section notes-section" id="notes-section-wrapper-${cardId}" style="display: none;">
+                            <!-- Notes Content (Hidden by default, appears in header) -->
+                            <div class="header-notes-section" id="notes-section-wrapper-${cardId}" style="display: none;">
                                 <div class="client-notes-section" id="notes-section-${cardId}">
                                     <!-- Notes will be rendered here -->
                                 </div>
                             </div>
+                        </header>
+
+                        <div class="client-info">
 
                             ${licensedStates ? `
                                 <div class="licensed-section" id="licensed-section-${cardId}" data-view="states">
                                     <div class="zone-header-chip">
-                                        <span id="section-title-${cardId}">Target States</span>
                                         <div class="zone-header-buttons">
                                             <button class="zone-btn active" data-zone-toggle="states" data-card-id="${cardId}">States</button>
                                             <button class="zone-btn" data-zone-toggle="campaign" data-card-id="${cardId}">Campaign</button>
@@ -5433,24 +5459,18 @@
                                         <p class="licensed" id="states-content-${cardId}">${licensedStates}</p>
                                         <div class="campaign-content" id="campaign-content-${cardId}" style="display: none;">
                                             <div class="campaign-header">
-                                                <div class="section-label collapsible-label collapsed" data-toggle="campaign-list-${cardId}">
-                                                    <span>Current Campaign<span class="collapsible-hint">Click to see</span></span>
-                                                </div>
                                                 <button class="btn-add-campaign" data-client-id="${clientId}" data-card-id="${cardId}" type="button">
                                                     <span>+</span>
                                                     <span>Add</span>
                                                 </button>
                                             </div>
-                                            <div id="campaign-list-${cardId}" class="collapsible-content collapsed">
+                                            <div id="campaign-list-${cardId}" class="campaign-list-content">
                                                 <!-- Campaign items will be rendered here -->
                                             </div>
                                         </div>
                                         ${targets.length > 0 ? `
                                             <div class="industries-content" id="industries-content-${cardId}" style="display: none;">
-                                                <div class="section-label collapsible-label collapsed" data-toggle="industries-${cardId}">
-                                                    <span>Industries<span class="collapsible-hint">Click to see</span></span>
-                                                </div>
-                                                <ul class="targets collapsible-content collapsed" id="industries-${cardId}">
+                                                <ul class="targets" id="industries-${cardId}">
                                                     ${targets.map(t => `<li>${t.charAt(0).toUpperCase() + t.slice(1)}</li>`).join('')}
                                                 </ul>
                                             </div>
@@ -5727,11 +5747,14 @@
 
             // Save the note
             if (saveClientNote(clientId, noteText)) {
-                // Clear input
-                input.value = '';
-
                 // Re-render notes
                 renderClientNotes(cardId, clientId);
+
+                // Close the input
+                const container = input.closest('.notes-input-container');
+                if (container) {
+                    container.remove();
+                }
             }
         });
 
@@ -5744,6 +5767,18 @@
 
             const container = input.closest('.notes-input-container');
             if (container) {
+                container.remove();
+            }
+        });
+
+        // Handle click outside to close notes input
+        document.addEventListener('click', (e) => {
+            const input = document.querySelector('.notes-input');
+            if (!input) return;
+
+            // If click is outside the input and its container
+            const container = input.closest('.notes-input-container');
+            if (container && !container.contains(e.target) && !e.target.closest('.btn-add-notes')) {
                 container.remove();
             }
         });
@@ -6020,7 +6055,6 @@
             const zone = button.getAttribute('data-zone-toggle');
             const cardId = button.getAttribute('data-card-id');
             const licensedSection = document.getElementById(`licensed-section-${cardId}`);
-            const sectionTitle = document.getElementById(`section-title-${cardId}`);
 
             if (!licensedSection) return;
 
@@ -6046,15 +6080,12 @@
             if (zone === 'states') {
                 if (statesContent) statesContent.style.display = 'block';
                 licensedSection.setAttribute('data-view', 'states');
-                sectionTitle.textContent = 'Target States';
             } else if (zone === 'campaign') {
                 if (campaignContent) campaignContent.style.display = 'block';
                 licensedSection.setAttribute('data-view', 'campaign');
-                sectionTitle.textContent = 'Campaign';
             } else if (zone === 'industries') {
                 if (industriesContent) industriesContent.style.display = 'block';
                 licensedSection.setAttribute('data-view', 'industries');
-                sectionTitle.textContent = 'Industries';
             }
         });
 
