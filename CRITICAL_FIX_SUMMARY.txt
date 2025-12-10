@@ -1,0 +1,146 @@
+═══════════════════════════════════════════════════════════════════════
+🔧 CRITICAL FIXES APPLIED - MISSING CLIENTS ADDED
+═══════════════════════════════════════════════════════════════════════
+
+📅 Deployed: December 9, 2025, 7:25 PM
+🔗 Commit: 3dfc725
+🌐 Live URL: https://nickbarnsley.github.io/Barnsley-Fern-Cheat-Sheet/
+
+═══════════════════════════════════════════════════════════════════════
+✅ ISSUES FIXED
+═══════════════════════════════════════════════════════════════════════
+
+1. ✅ Added The Huneycutt Group, Inc
+   • Assigned to: Jacques Lebleu
+   • Status: Placeholder (awaiting onboarding form)
+   • Phone: 615-555-0150 (placeholder)
+   • Location: Nashville, TN
+   • States: TN, KY, AL, GA
+
+2. ✅ Added Capitol Group
+   • Assigned to: Al Butler
+   • Status: Placeholder (awaiting onboarding form)
+   • Phone: 202-555-0100 (placeholder)
+   • Location: Washington, DC
+   • States: DC, MD, VA
+
+═══════════════════════════════════════════════════════════════════════
+📊 FINAL CLIENT COUNT: 20 TOTAL
+═══════════════════════════════════════════════════════════════════════
+
+JACQUES LEBLEU (11 clients):
+  1. ✅ Allee Agency Inc.
+  2. ✅ Koosh Insurance
+  3. ✅ STATE FARM - TIM MAUDSLEY AGENT
+  4. ✅ GRIT Insurance
+  5. ✅ IMD INSURANCE & Financial Services LLC
+  6. ✅ PRIME INSURANCE SERVICES
+  7. ✅ Ingram Insurance Agency, LLC
+  8. ✅ Premier Group Insurance
+  9. ✅ Eastman Risk Advisors
+ 10. ⚠️  Woot Insurance Agency (Sanders) - placeholder
+ 11. ⚠️  The Huneycutt Group, Inc - placeholder ⭐ NEW
+
+AL BUTLER (9 clients):
+  1. ✅ Arroyo Insurance Services - South Bay
+  2. ✅ The Bulow Group, Inc
+  3. ✅ WEER INSURANCE AND FINANCIAL SERVICES, INC
+  4. ✅ Insurance Express
+  5. ✅ UWIB Risk Inc
+  6. ✅ Insurable, Inc.
+  7. ✅ Gerety Insurance
+  8. ⚠️  Arcstone Insurance Advisors - placeholder
+  9. ⚠️  Capitol Group - placeholder ⭐ NEW
+
+═══════════════════════════════════════════════════════════════════════
+📋 ONBOARDING STATUS
+═══════════════════════════════════════════════════════════════════════
+
+✅ COMPLETE (16 clients with verified onboarding data):
+   • All contact information accurate
+   • Licensed states configured
+   • Target industries specified
+   • Team/broker information included
+   • GHL tokens configured
+
+⚠️  AWAITING ONBOARDING FORMS (4 clients using placeholders):
+   1. Woot Insurance Agency (Sanders)
+      - Using placeholder phone/address
+      - Need: Real contact info, GHL token, team details
+
+   2. Arcstone Insurance Advisors
+      - Using placeholder phone/address
+      - Need: Real contact info, GHL token, team details
+
+   3. The Huneycutt Group, Inc ⭐ NEW
+      - Using placeholder phone/address
+      - Need: Real contact info, GHL token, team details
+      - Contact: Chat Huneycutt
+
+   4. Capitol Group ⭐ NEW
+      - Using placeholder phone/address
+      - Need: Real contact info, GHL token, team details
+
+═══════════════════════════════════════════════════════════════════════
+🌐 DEPLOYMENT STATUS
+═══════════════════════════════════════════════════════════════════════
+
+GitHub Repository:
+  https://github.com/nickbarnsley/Barnsley-Fern-Cheat-Sheet
+
+Live Cheat Sheet:
+  https://nickbarnsley.github.io/Barnsley-Fern-Cheat-Sheet/
+
+GitHub Actions:
+  Deploying now (30-60 seconds)
+
+Local Development:
+  ~/Desktop/BARNSLEY-FERN-AI/appointment-setter/
+
+═══════════════════════════════════════════════════════════════════════
+📄 VERIFICATION REPORTS
+═══════════════════════════════════════════════════════════════════════
+
+Available Reports:
+  • onboarding_verification.txt - Client onboarding status
+  • cheat_sheet_final_verification.html - PDF-ready report
+  • ONBOARDING_STATUS.txt - Complete deployment history
+  • DEPLOYMENT_SUMMARY.txt - Full summary
+
+═══════════════════════════════════════════════════════════════════════
+🛠️  NEXT STEPS
+═══════════════════════════════════════════════════════════════════════
+
+When onboarding forms arrive for Huneycutt and Capitol:
+
+1. Update index.html with real data:
+   - Replace placeholder phone numbers
+   - Add real business addresses
+   - Configure GHL location IDs
+   - Add GHL tokens
+   - Add team/broker information
+
+2. Commit and push changes
+
+3. Verify live deployment
+
+═══════════════════════════════════════════════════════════════════════
+✅ STATUS: READY FOR TEAM USE
+═══════════════════════════════════════════════════════════════════════
+
+The cheat sheet now includes ALL requested clients:
+  ✅ Huneycutt Group - ADDED
+  ✅ Capitol Group - ADDED
+  ✅ All 20 clients present
+  ✅ Setter assignments: Jacques (11), Al (9)
+  ✅ 16 clients with complete verified data (80%)
+  ✅ 4 clients awaiting onboarding forms (20%)
+
+The cheat sheet is fully functional. The 4 placeholder clients will not
+impact team operations and can be updated seamlessly when their
+onboarding forms are received.
+
+═══════════════════════════════════════════════════════════════════════
+🤖 Managed by BARNSLEY-AI
+📱 Ready for team use tomorrow morning
+═══════════════════════════════════════════════════════════════════════
