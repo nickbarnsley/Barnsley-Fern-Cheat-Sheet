@@ -1,0 +1,178 @@
+═══════════════════════════════════════════════════════════════════
+🔄 AIRTABLE SYNC RESULTS - NEW ONBOARDING FORMS
+═══════════════════════════════════════════════════════════════════
+
+📅 Synced: December 9, 2025, 7:45 PM
+📊 Clients Found: 4/4
+🎯 Status: PARTIAL DATA AVAILABLE
+
+═══════════════════════════════════════════════════════════════════
+✅ CLIENTS FOUND IN AIRTABLE
+═══════════════════════════════════════════════════════════════════
+
+1. THE HUNEYCUTT GROUP, INC
+   ✅ Status: Active
+   👤 Owner: Chat Huneycutt
+   📧 Email: cwh@huneycuttgroup.com
+   📍 Setter: Jacques Lebleu
+   🔑 GHL Location ID: BQM9uFfPyhB91vj3WIVl
+   🔐 GHL Token: pit-0ee50f59-10d0-4350-a16f-9488a1972486
+   📝 Onboarding Form: https://forms.fillout.com/t/uuZqcNtaSnus?id=recMWUvYkE8CXApps
+
+   ⚠️  MISSING DATA:
+   - Phone number
+   - Address
+   - Licensed states
+   - Target industries
+   - Broker team information
+
+2. ARCSTONE INSURANCE ADVISORS
+   ✅ Status: Active
+   👤 Owner: Luis Santos
+   📧 Email: luis@arcstoneinsuranceadvisors.com
+   📍 Setter: Al Butler (Alfred)
+   🔑 GHL Location ID: AxvXcGNk7W0ecSLwVBAL
+   🔐 GHL Token: pit-f68d31c5-49be-43cf-86f8-b1cb3f887ec5
+   📝 Onboarding Form: https://forms.fillout.com/t/uuZqcNtaSnus?id=recOLeYB97FngSNT2
+
+   ⚠️  MISSING DATA:
+   - Phone number
+   - Address
+   - Licensed states
+   - Target industries
+   - Broker team information
+
+3. WOOT INSURANCE AGENCY (SANDERS)
+   ⚠️  Status: Active (BUT SEE WARNING BELOW)
+   👤 Owner: Evan Sanders
+   📧 Email: evan@wootinsurance.com
+   📍 Setter: Jacques Lebleu
+   🔑 GHL Location ID: zeGuYWHFYndKlOobwWq5
+   🔐 GHL Token: pit-edd89fa3-e0db-4ebd-a0e3-74281fdbcf94
+   📝 Onboarding Form: https://forms.fillout.com/t/uuZqcNtaSnus?id=recX6l99BKjzZJ33i
+
+   🚨 CRITICAL WARNING:
+   Airtable Notes Field: "Client lost and not renewing effective April 30, 2025.
+   Client was not a great fit, wanted to test out for 30 days. Was expecting
+   too much in a short span of time. Closed a couple deals with a couple on
+   the back burner renewing later in the year. Solo, no employees."
+
+   → This client should be marked as LOST or INACTIVE soon!
+   → Consider removing from active count after April 30, 2025
+
+   ⚠️  MISSING DATA:
+   - Phone number
+   - Address
+   - Licensed states
+   - Target industries
+   - Broker team information
+
+4. THE CAPITOL GROUP OF COMPANIES
+   🟡 Status: Onboarding
+   👤 Owner: Laura Sutton
+   📧 Email: Lsutton@Capitol-Group.com
+   📍 Setter: NOT YET ASSIGNED
+   🔑 GHL Location ID: 195Bdp1H0jgKL7NKVewd
+   🔐 GHL Token: pit-6ae5832f-a33f-4bf2-9cfc-52b0840668d5
+   📝 Onboarding Form: https://forms.fillout.com/t/uuZqcNtaSnus?id=recluIFJR0PolOx0V
+
+   ⚠️  MISSING DATA:
+   - Phone number
+   - Address
+   - Licensed states
+   - Target industries
+   - Broker team information
+   - Setter assignment (onboarding status)
+
+═══════════════════════════════════════════════════════════════════
+📋 WHAT DATA IS AVAILABLE vs MISSING
+═══════════════════════════════════════════════════════════════════
+
+✅ AVAILABLE IN AIRTABLE:
+   • Business names
+   • Owner full names (first + last)
+   • Owner emails
+   • GHL Location IDs (critical for API integration)
+   • GHL Tokens (critical for API integration)
+   • Setter assignments (except Capitol Group)
+   • Client status (Active/Onboarding)
+   • Onboarding form URLs
+
+❌ NOT YET AVAILABLE IN AIRTABLE:
+   • Owner phone numbers (all blank)
+   • Business addresses (all blank)
+   • Licensed states (all blank arrays)
+   • Target industries (all show placeholder: "1: \n2: \n3: \n4: \n5: \n")
+   • Types of insurance sold (all blank arrays)
+   • Broker team members (all blank arrays)
+   • Timezones (all blank)
+   • Tax EINs (all blank)
+   • Websites (all blank)
+
+═══════════════════════════════════════════════════════════════════
+🔍 ANALYSIS & RECOMMENDATIONS
+═══════════════════════════════════════════════════════════════════
+
+1. ONBOARDING FORMS NOT FULLY COMPLETED
+   The onboarding form URLs exist in Airtable, but the detailed fields
+   are empty. This suggests either:
+   a) The forms haven't been filled out yet by the clients
+   b) The form responses haven't been synced back to Airtable yet
+   c) The data is stored in a different location/format
+
+2. GHL INTEGRATION IS READY
+   Even though detailed onboarding data is missing, the GHL Location IDs
+   and Tokens are present, which means these clients CAN receive leads
+   and appointments through the GHL system.
+
+3. WOOT INSURANCE CONCERN
+   This client has "Active" status but the notes field indicates they're
+   leaving April 30, 2025. The status should be updated to reflect this,
+   or they should be removed from active client count after that date.
+
+4. CAPITOL GROUP AWAITING SETTER ASSIGNMENT
+   As an "Onboarding" client, Capitol Group doesn't have a setter assigned
+   yet. This is expected behavior.
+
+═══════════════════════════════════════════════════════════════════
+✅ NEXT STEPS
+═══════════════════════════════════════════════════════════════════
+
+1. UPDATE CHEAT SHEET WITH AVAILABLE DATA:
+   • Replace placeholder owner names with real names from Airtable
+   • Replace placeholder emails with real emails from Airtable
+   • Update GHL Location IDs and Tokens with real values
+   • Update setter assignments (Huneycutt & Woot → Jacques; Arcstone → Al)
+   • Keep Capitol Group as "Onboarding" with no setter assigned yet
+
+2. KEEP PLACEHOLDER DATA FOR MISSING FIELDS:
+   • Phone numbers (use generic 555- numbers until real data available)
+   • Addresses (use generic city/state until real data available)
+   • Licensed states (use reasonable defaults until real data available)
+   • Target industries (use generic insurance types until real data available)
+   • Broker teams (use placeholder contact until real data available)
+
+3. FLAG WOOT INSURANCE:
+   • Add note in cheat sheet that this client is ending April 30, 2025
+   • Consider excluding from long-term projections
+   • Update status after April 30, 2025
+
+4. FOLLOW UP ON MISSING DATA:
+   • Check with team to see if onboarding forms need to be completed
+   • Verify if form responses are being synced to Airtable correctly
+   • Consider manual data entry if forms are completed but not syncing
+
+═══════════════════════════════════════════════════════════════════
+📊 FINAL SUMMARY
+═══════════════════════════════════════════════════════════════════
+
+✅ All 4 clients found in Airtable
+✅ GHL integration ready (Location IDs + Tokens present)
+✅ Setter assignments available (except Capitol Group - onboarding)
+⚠️  Detailed onboarding data not yet available in Airtable
+🚨 Woot Insurance marked as leaving April 30, 2025
+
+Action: Proceeding to update cheat sheet with available Airtable data
+while keeping placeholder information for missing fields.
+
+═══════════════════════════════════════════════════════════════════

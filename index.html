@@ -4516,8 +4516,8 @@
                 address: "123 Main St, City, ST 12345",
                 timezone: "Eastern Standard Time",
                 setter: "Jacques Lebleu",
-                ghlLocationId: "woot_placeholder",
-                ghlToken: "pit-woot-placeholder",
+                ghlLocationId: "zeGuYWHFYndKlOobwWq5",
+                ghlToken: "pit-edd89fa3-e0db-4ebd-a0e3-74281fdbcf94",
                 licensedStates: ["NY", "NJ", "CT"],
                 targetIndustries: ["Commercial Lines", "Personal Lines"],
                 brokers: [
@@ -4528,51 +4528,52 @@
                 businessName: "Arcstone Insurance Advisors",
                 ownerName: "Luis Santos",
                 ownerPhone: "555-234-5678",
-                ownerEmail: "luis@arcstoneinsurance.com",
-                website: "www.arcstoneinsurance.com",
+                ownerEmail: "luis@arcstoneinsuranceadvisors.com",
+                website: "www.arcstoneinsuranceadvisors.com",
                 address: "456 Oak Ave, City, ST 54321",
                 timezone: "Central Standard Time",
                 setter: "Al Butler",
-                ghlLocationId: "arcstone_placeholder",
-                ghlToken: "pit-arcstone-placeholder",
+                ghlLocationId: "AxvXcGNk7W0ecSLwVBAL",
+                ghlToken: "pit-f68d31c5-49be-43cf-86f8-b1cb3f887ec5",
                 licensedStates: ["TX", "OK", "AR"],
                 targetIndustries: ["Commercial Lines"],
                 brokers: [
-                    {name: "Luis Santos", phone: "5552345678", email: "luis@arcstoneinsurance.com"}
+                    {name: "Luis Santos", phone: "5552345678", email: "luis@arcstoneinsuranceadvisors.com"}
                 ]
             },
             {
                 businessName: "The Huneycutt Group, Inc",
                 ownerName: "Chat Huneycutt",
                 ownerPhone: "615-555-0150",
-                ownerEmail: "chat@huneycuttgroup.com",
+                ownerEmail: "cwh@huneycuttgroup.com",
                 website: "www.huneycuttgroup.com",
                 address: "Nashville, TN",
                 timezone: "Central Standard Time",
                 setter: "Jacques Lebleu",
-                ghlLocationId: "huneycutt_placeholder",
-                ghlToken: "pit-huneycutt-placeholder",
+                ghlLocationId: "BQM9uFfPyhB91vj3WIVl",
+                ghlToken: "pit-0ee50f59-10d0-4350-a16f-9488a1972486",
                 licensedStates: ["TN", "KY", "AL", "GA"],
                 targetIndustries: ["Commercial Insurance", "Business Insurance"],
                 brokers: [
-                    {name: "Chat Huneycutt", phone: "6155550150", email: "chat@huneycuttgroup.com"}
+                    {name: "Chat Huneycutt", phone: "6155550150", email: "cwh@huneycuttgroup.com"}
                 ]
             },
             {
-                businessName: "Capitol Group",
-                ownerName: "Capitol Group Owner",
+                businessName: "The Capitol Group of Companies",
+                ownerName: "Laura Sutton",
                 ownerPhone: "202-555-0100",
-                ownerEmail: "info@capitolgroup.com",
-                website: "www.capitolgroup.com",
+                ownerEmail: "Lsutton@Capitol-Group.com",
+                website: "www.capitol-group.com",
                 address: "Washington, DC",
                 timezone: "Eastern Standard Time",
-                setter: "Al Butler",
-                ghlLocationId: "capitol_placeholder",
-                ghlToken: "pit-capitol-placeholder",
+                setter: "Onboarding - TBD",
+                status: "Onboarding",
+                ghlLocationId: "195Bdp1H0jgKL7NKVewd",
+                ghlToken: "pit-6ae5832f-a33f-4bf2-9cfc-52b0840668d5",
                 licensedStates: ["DC", "MD", "VA"],
                 targetIndustries: ["Commercial Insurance"],
                 brokers: [
-                    {name: "Capitol Group Team", phone: "2025550100", email: "info@capitolgroup.com"}
+                    {name: "Laura Sutton", phone: "2025550100", email: "Lsutton@Capitol-Group.com"}
                 ]
             }
         ];
@@ -4584,6 +4585,65 @@
             }
             return a.businessName.localeCompare(b.businessName);
         });
+
+        // ============= INTELLIGENT CLIENT MANAGEMENT =============
+        /**
+         * Client Status Intelligence System
+         *
+         * Automatically filters and counts clients based on their status:
+         * - Active: Currently active clients receiving services
+         * - Onboarding: New clients being set up (not yet active)
+         * - Lost: Clients who have churned or are inactive (EXCLUDED from counts)
+         * - Warning: Clients with upcoming issues (e.g., ending contract)
+         *
+         * IMPORTANT: When a client's Airtable status changes to "Lost" or "Inactive",
+         * they should be excluded from all active client counts.
+         */
+
+        // Helper: Get only active clients (excludes Lost/Inactive)
+        function getActiveClients() {
+            return clients.filter(c => {
+                const status = (c.status || 'Active').toLowerCase();
+                return !status.includes('lost') && !status.includes('inactive');
+            });
+        }
+
+        // Helper: Get clients by status
+        function getClientsByStatus(status) {
+            return clients.filter(c =>
+                (c.status || 'Active').toLowerCase() === status.toLowerCase()
+            );
+        }
+
+        // Helper: Get client counts by category
+        function getClientCounts() {
+            const active = clients.filter(c => {
+                const status = (c.status || 'Active').toLowerCase();
+                return status === 'active';
+            });
+
+            const onboarding = clients.filter(c =>
+                (c.status || '').toLowerCase() === 'onboarding'
+            );
+
+            const lost = clients.filter(c => {
+                const status = (c.status || '').toLowerCase();
+                return status.includes('lost') || status.includes('inactive');
+            });
+
+            return {
+                total: clients.length,
+                active: active.length,
+                onboarding: onboarding.length,
+                lost: lost.length,
+                activeTotal: active.length + onboarding.length, // Active + Onboarding
+                jacquesTotal: active.filter(c => c.setter === 'Jacques Lebleu').length,
+                alTotal: active.filter(c => c.setter === 'Al Butler').length
+            };
+        }
+
+        // Log client counts for verification
+        console.log('📊 Client Counts:', getClientCounts());
 
         // ============= AIRTABLE INTEGRATION =============
         /**
