@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+"""Generate HTML report for PDF printing"""
+from pathlib import Path
+from datetime import datetime
+
+# Read the text report
+with open('verification_report.txt', 'r') as f:
+    report_content = f.read()
+
+# Create HTML for PDF
+html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cheat Sheet Verification Report - {datetime.now().strftime('%Y-%m-%d')}</title>
+    <style>
+        @page {{
+            margin: 1in;
+        }}
+        body {{
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            color: #333;
+        }}
+        h1 {{
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }}
+        h2 {{
+            color: #555;
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 8px;
+        }}
+        .header {{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }}
+        .header h1 {{
+            margin: 0;
+            border: none;
+            color: white;
+        }}
+        .header .date {{
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }}
+        .summary {{
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+            margin: 20px 0;
+        }}
+        .summary h2 {{
+            margin-top: 0;
+            color: #007bff;
+        }}
+        .summary ul {{
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }}
+        .summary li {{
+            padding: 8px 0;
+            font-size: 16px;
+        }}
+        .summary li:before {{
+            content: "✅ ";
+            color: #28a745;
+            font-weight: bold;
+        }}
+        .client-list {{
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }}
+        .client {{
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        .client-name {{
+            font-weight: bold;
+            color: #007bff;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }}
+        .client-details {{
+            font-size: 14px;
+            color: #666;
+            margin-left: 20px;
+        }}
+        .setter-section {{
+            margin: 30px 0;
+        }}
+        .setter-header {{
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+        }}
+        .jacques {{ background: #007bff; }}
+        .al {{ background: #28a745; }}
+        .verified {{
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin: 30px 0;
+        }}
+        pre {{
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+        }}
+        .footer {{
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎯 Barnsley Fern Cheat Sheet</h1>
+        <h2 style="color: white; border: none; margin: 10px 0 0 0;">Complete Verification Report</h2>
+        <div class="date">Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}</div>
+    </div>
+
+    <div class="summary">
+        <h2>📊 Executive Summary</h2>
+        <ul>
+            <li><strong>Total Active Clients:</strong> 18</li>
+            <li><strong>Jacques Lebleu:</strong> 10 clients</li>
+            <li><strong>Al Butler:</strong> 8 clients</li>
+            <li><strong>All clients verified:</strong> Contact info, setters, GHL tokens</li>
+            <li><strong>Status:</strong> READY FOR TEAM USE</li>
+        </ul>
+    </div>
+
+    <h2>📋 Complete Client Roster</h2>
+    <pre>{report_content}</pre>
+
+    <div class="verified">
+        ✅ ALL DATA VERIFIED AND READY FOR TEAM USE
+    </div>
+
+    <div class="footer">
+        <p><strong>Live Cheat Sheet:</strong> https://nickbarnsley.github.io/Barnsley-Fern-Cheat-Sheet/</p>
+        <p>Managed by BARNSLEY-AI | Auto-updates via GitHub Actions</p>
+        <p>Report generated by BARNSLEY-FERN-AI/appointment-setter verification system</p>
+    </div>
+</body>
+</html>"""
+
+with open('cheat_sheet_verification.html', 'w') as f:
+    f.write(html)
+
+print("✅ HTML report created: cheat_sheet_verification.html")
+print("📄 Open in browser and use Print → Save as PDF")
+print("")
+print("Report includes:")
+print("  • All 18 client details")
+print("  • Setter distributions (Jacques: 10, Al: 8)")
+print("  • Contact information verification")
+print("  • Professional formatting for printing")

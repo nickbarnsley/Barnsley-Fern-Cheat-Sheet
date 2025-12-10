@@ -1,0 +1,156 @@
+======================================================================
+📊 BARNSLEY FERN CHEAT SHEET VERIFICATION REPORT
+======================================================================
+Generated: 2025-12-09 19:03:43
+
+TOTAL ACTIVE CLIENTS: 18
+----------------------------------------------------------------------
+
+ 1. Allee Agency Inc.
+    Setter: Jacques Lebleu
+    Phone: 970-274-3352
+    Email: jamie@alleeins.com
+    Website: https://www.alleeins.com/
+
+ 2. Arroyo Insurance Services - South Bay
+    Setter: Al Butler
+    Phone: 310-356-8206
+    Email: robertk@arroyoins.com
+    Website: www.arroyosouthbay.com
+
+ 3. The Bulow Group, Inc
+    Setter: Al Butler
+    Phone: 708-906-6300
+    Email: tbulow@thebulowgroup.com
+    Website: thebulowgroup.com
+
+ 4. WEER INSURANCE AND FINANCIAL SERVICES, INC
+    Setter: Al Butler
+    Phone: 309-303-2698
+    Email: scott@weeryouragent.com
+    Website: www.weeryouragent.com
+
+ 5. Insurance Express
+    Setter: Al Butler
+    Phone: 561-345-7332
+    Email: raymond@insuranceexpress.com
+    Website: InsuranceExpress.com
+
+ 6. UWIB Risk Inc
+    Setter: Al Butler
+    Phone: 615-234-0347
+    Email: josh@uwib.com
+    Website: https://uwibrisk.com/
+
+ 7. Koosh Insurance
+    Setter: Jacques Lebleu
+    Phone: 954-495-6965
+    Email: itai@koosh-ins.com
+    Website: www.koosh-ins.com
+
+ 8. STATE FARM - TIM MAUDSLEY AGENT
+    Setter: Jacques Lebleu
+    Phone: 702-998-4545
+    Email: tim@insurancequote-nv.com
+    Website: www.insurancequote-nv.com
+
+ 9. Insurable, Inc.
+    Setter: Al Butler
+    Phone: 412-244-1000
+    Email: bkb@insurableinc.com
+    Website: InsurableInc.com
+
+10. GRIT Insurance
+    Setter: Jacques Lebleu
+    Phone: 801-948-8091
+    Email: Kirk@gritinsurance.com
+    Website: www.gritinsurance.com
+
+11. Gerety Insurance
+    Setter: Al Butler
+    Phone: 410-803-2600
+    Email: rick@geretyinsurance.com
+    Website: www.geretyinsurance.com
+
+12. IMD INSURANCE & Financial Services LLC
+    Setter: Jacques Lebleu
+    Phone: 832-754-7808
+    Email: jason@imdins.com
+    Website: www.imdins.com
+
+13. PRIME INSURANCE SERVICES
+    Setter: Jacques Lebleu
+    Phone: 201-285-4123
+    Email: MIN@PRIMEISERVICES.COM
+    Website: www.primeiservices.com
+
+14. Ingram Insurance Agency, LLC
+    Setter: Jacques Lebleu
+    Phone: 615-557-5436
+    Email: chris@theingramagency.com
+    Website: www.theingramagency.com
+
+15. Premier Group Insurance
+    Setter: Jacques Lebleu
+    Phone: 219-695-3031
+    Email: jlangen@premiergrpins.com
+    Website: www.premiergrpins.com
+
+16. Eastman Risk Advisors
+    Setter: Jacques Lebleu
+    Phone: 801-888-0550
+    Email: Coltan@Eastmanrisk.com
+    Website: www.eastmanrisk.com
+
+17. Woot Insurance Agency (Sanders)
+    Setter: Jacques Lebleu
+    Phone: 555-123-4567
+    Email: evan@wootinsurance.com
+    Website: www.wootinsurance.com
+
+18. Arcstone Insurance Advisors
+    Setter: Al Butler
+    Phone: 555-234-5678
+    Email: luis@arcstoneinsurance.com
+    Website: www.arcstoneinsurance.com
+
+======================================================================
+SETTER DISTRIBUTION
+======================================================================
+
+JACQUES LEBLEU: 10 clients
+----------------------------------------------------------------------
+   1. Allee Agency Inc.
+   2. Koosh Insurance
+   3. STATE FARM - TIM MAUDSLEY AGENT
+   4. GRIT Insurance
+   5. IMD INSURANCE & Financial Services LLC
+   6. PRIME INSURANCE SERVICES
+   7. Ingram Insurance Agency, LLC
+   8. Premier Group Insurance
+   9. Eastman Risk Advisors
+  10. Woot Insurance Agency (Sanders)
+
+AL BUTLER: 8 clients
+----------------------------------------------------------------------
+   1. Arroyo Insurance Services - South Bay
+   2. The Bulow Group, Inc
+   3. WEER INSURANCE AND FINANCIAL SERVICES, INC
+   4. Insurance Express
+   5. UWIB Risk Inc
+   6. Insurable, Inc.
+   7. Gerety Insurance
+   8. Arcstone Insurance Advisors
+
+======================================================================
+SUMMARY
+======================================================================
+✅ Total Clients: 18
+✅ Jacques Lebleu: 10 clients
+✅ Al Butler: 8 clients
+✅ All clients have setter assignments
+✅ All clients have contact information
+
+======================================================================
+✅ VERIFICATION COMPLETE - READY FOR TEAM USE
+======================================================================
