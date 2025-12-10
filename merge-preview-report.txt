@@ -1,0 +1,100 @@
+═══════════════════════════════════════════════════════════════════════════
+                    CHEAT SHEET MERGE - DRY RUN PREVIEW
+                         ⚠️  NO CHANGES APPLIED YET ⚠️
+═══════════════════════════════════════════════════════════════════════════
+
+📊 SUMMARY
+───────────────────────────────────────────────────────────────────────────
+Total Clients Analyzed: 13
+Clients with Changes: 3
+Licensed States to Add: 1
+Target Industries to Add: 3
+Team Members to Add: 0
+
+═══════════════════════════════════════════════════════════════════════════
+                          DETAILED CHANGES
+═══════════════════════════════════════════════════════════════════════════
+
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+📋 WEER INSURANCE AND FINANCIAL SERVICES, INC
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+🗺️  LICENSED STATES
+   BEFORE (8): CA, FL, GA, IL, IN, OH, TX, WI
+   ➕ ADDING: WISCONSIN
+   AFTER (9): CA, FL, GA, IL, IN, OH, TX, WI, WISCONSIN
+
+🎯 TARGET INDUSTRIES
+   BEFORE (5):
+      • Artisian & General Contractors
+      • Real Estate Investors - Appartment Buildings, Commercial Strip Centers, Condo Associations
+      • Restaurants
+      • Bars - only in IL & WI
+      • Commercial Auto
+   ➕ ADDING (1):
+      • Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations
+   AFTER (6):
+      • Artisian & General Contractors
+      • Real Estate Investors - Appartment Buildings, Commercial Strip Centers, Condo Associations
+      • Restaurants
+      • Bars - only in IL & WI
+      • Commercial Auto
+      • Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations
+
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+📋 Koosh Insurance
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+🎯 TARGET INDUSTRIES
+   BEFORE (5):
+      • Commercial Real Estate
+      • Residential Real Estate
+      • Restaurants
+      • Construction
+      • Hotels
+   ➕ ADDING (1):
+      • Residental Real Estate
+   AFTER (6):
+      • Commercial Real Estate
+      • Residential Real Estate
+      • Restaurants
+      • Construction
+      • Hotels
+      • Residental Real Estate
+
+
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+📋 UWIB Risk Inc
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+
+🎯 TARGET INDUSTRIES
+   BEFORE (4):
+      • Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)
+      • Restaurants
+      • Manufacturing
+      • Property Manager
+   ➕ ADDING (1):
+      • Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)
+   AFTER (5):
+      • Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)
+      • Restaurants
+      • Manufacturing
+      • Property Manager
+      • Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)
+
+
+═══════════════════════════════════════════════════════════════════════════
+                             NEXT STEPS
+═══════════════════════════════════════════════════════════════════════════
+
+1. ✅ Review all proposed additions above
+2. ✅ Verify accuracy of new data
+3. ✅ Approve or request changes
+4. 🔄 Claude will then:
+   • Create timestamped backup of cheat-sheet-v2.html
+   • Apply all additions to the cheat sheet
+   • Generate final report with before/after comparison
+
+═══════════════════════════════════════════════════════════════════════════

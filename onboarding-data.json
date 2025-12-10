@@ -1,0 +1,303 @@
+{
+  "clients": [
+    {
+      "businessName": "The Bulow Group, Inc",
+      "website": "thebulowgroup.com",
+      "address": "8101 183rd Street, IL 60487",
+      "taxEIN": "",
+      "ownerFirstName": "TOM",
+      "ownerLastName": "Bulow",
+      "ownerPhone": "+17089066300",
+      "ownerEmail": "tbulow@thebulowgroup.com",
+      "targetIndustries": [
+        "Restaurant Groups",
+        "Construction",
+        "Hardware Stores",
+        "Manufacturing/Food Distributors",
+        "Waste Haulers & Garbage"
+      ],
+      "brokers": [
+        {"name": "Nick Hogevenn", "phone": "", "email": ""},
+        {"name": "Tom DeMatteo", "phone": "", "email": ""},
+        {"name": "Bobby Daw", "phone": "", "email": ""},
+        {"name": "Rob Randick", "phone": "", "email": ""}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "GRIT Insurance",
+      "website": "www.gritinsurance.com",
+      "address": "5525 S 900 E Ste 345, UT 84117",
+      "taxEIN": "820694963",
+      "ownerFirstName": "Kirk",
+      "ownerLastName": "Chester",
+      "ownerPhone": "+18019488091",
+      "ownerEmail": "Kirk@gritinsurance.com",
+      "licensedStates": ["Utah", "Idaho", "Colorado", "Arizona", "Texas", "Oregon", "Washington", "California", "Montana", "Nevada", "North Dakota", "Wyoming"],
+      "targetIndustries": [
+        "Commercial Contractors",
+        "Landscape Contractors",
+        "Excavation Contractors",
+        "Manufacturing"
+      ],
+      "brokers": [
+        {"name": "Kirk Chester", "phone": "801-948-8091", "email": "Kirk@gritinsurance.com"},
+        {"name": "Justin Peterson", "phone": "801-948-8090", "email": "Justin@gritinsurance.com"},
+        {"name": "Easton Rentmeister", "phone": "801-948-8092", "email": "Easton@gritinsurance.com"}
+      ],
+      "timezone": "America/Denver (GMT-06:00)"
+    },
+    {
+      "businessName": "Ingram Insurance Agency, LLC",
+      "website": "www.theingramagency.com",
+      "address": "105 Glen Oak Blvd. Suite 200 Hendersonville, TN 37075",
+      "taxEIN": "853625213",
+      "ownerFirstName": "Chris",
+      "ownerLastName": "Ingram",
+      "ownerPhone": "+16155575436",
+      "ownerEmail": "chris@theingramagency.com",
+      "licensedStates": ["New Hampshire", "Utah", "Wyoming", "Alabama", "Arkansas", "Delaware", "Florida", "Georgia", "Idaho", "Illinois", "Indiana", "Iowa", "Kentucky", "Maryland", "Minnesota", "Mississippi", "Nevada", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "South Carolina", "Tennessee", "Texas", "Virginia", "Washington", "Colorado"],
+      "targetIndustries": [
+        "Artisan Contractor, NO General Contractors",
+        "Restaurants",
+        "Professional Services - anything in an office",
+        "HVAC/ELEC/PLUMBING Contractors",
+        "WORK COMP - All classes"
+      ],
+      "brokers": [
+        {"name": "Chris Ingram", "phone": "615-675-5154", "email": ""}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "WEER INSURANCE AND FINANCIAL SERVICES, INC",
+      "website": "www.weeryouragent.com",
+      "address": "2409 WESTWARD DR, Illinois 60081",
+      "taxEIN": "463095403",
+      "ownerFirstName": "Scott",
+      "ownerLastName": "Weer",
+      "ownerPhone": "+13093032698",
+      "ownerEmail": "scott@weeryouragent.com",
+      "licensedStates": ["Illinois", "Indiana", "Wisconsin", "Ohio", "Florida", "California", "Texas", "Georgia"],
+      "targetIndustries": [
+        "Artisian & General Contractors",
+        "Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations",
+        "Restaurants",
+        "Bars - only in IL & WI",
+        "Commercial Auto"
+      ],
+      "brokers": [
+        {"name": "Tiffany Trevino", "phone": "8472781099 ext 104", "email": "tiffany@weeryouragent.com"},
+        {"name": "Steve Gallardo", "phone": "8472781099 ext 102", "email": "steve@weeryouragent.com"},
+        {"name": "Sherrie Hurley", "phone": "8472781099 ext", "email": "sherrie@weeryouragent.com"},
+        {"name": "Kasia Biedrawa", "phone": "8472781099 ext 105", "email": "kasia@weeryouragent.com"}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "Arroyo Insurance Services - South Bay",
+      "website": "www.arroyosouthbay.com",
+      "address": "5000 E Spring Street, Suite 570, Long Beach, CA 90815",
+      "taxEIN": "204200742",
+      "ownerFirstName": "Robert",
+      "ownerLastName": "Kelly",
+      "ownerPhone": "+13103568206",
+      "ownerEmail": "robertk@arroyoins.com",
+      "targetIndustries": [
+        "Wholesale Distribution",
+        "Manufacturing",
+        "Commercial Real Estate - Industrial, Shopping Centers, Apartments, Property Managers",
+        "Construction - Solar, Roofing, Plumbing, HVAC",
+        "Hospitality - Restaurants, Bar/Tavern"
+      ],
+      "brokers": [
+        {"name": "Robert Kelly", "phone": "3103568206", "email": "robertk@arroyoins.com"},
+        {"name": "Ryan McDonald", "phone": "4243985624", "email": "ryanm@arroyoins.com"},
+        {"name": "Seamus McDonald", "phone": "3103568214", "email": "seamusm@arroyoins.com"},
+        {"name": "William Dessert", "phone": "3103568210", "email": "williamd@arroyoins.com"}
+      ],
+      "timezone": "America/Los_Angeles (GMT-07:00)"
+    },
+    {
+      "businessName": "STATE FARM - TIM MAUDSLEY AGENT",
+      "website": "www.insurancequote-nv.com",
+      "address": "8170 S EASTERN AVE #11 LAS VEGAS NV 89123",
+      "taxEIN": "331444062",
+      "ownerFirstName": "TIMOTHY",
+      "ownerLastName": "MAUDSLEY",
+      "ownerPhone": "+17029984545",
+      "ownerEmail": "tim@insurancequote-nv.com",
+      "targetIndustries": [
+        "ARTISAN SERVICE CONTRACTORS",
+        "HOMEOWNERS ASSOCIATIONS",
+        "RESTAURANTS",
+        "AUTO REPAIR",
+        "LESSOR RISK - BUILDING OWNERS"
+      ],
+      "brokers": [
+        {"name": "KADEN MAALOUF", "phone": "7029984545", "email": "KADEN.MAALOUF.VADRFZ@STATEFARM.COM"},
+        {"name": "JEREMY WINCHESTER", "phone": "7029984545", "email": "JEREMY.WINCHESTER.VAB79Y@STATEFARM.COM"},
+        {"name": "GABRIELA ANDRADE", "phone": "7029984545", "email": "GABRIELA.ANDRADE.VADYCA@STATEFARM.COM"}
+      ],
+      "timezone": "America/Los_Angeles (GMT-07:00)"
+    },
+    {
+      "businessName": "PRIME INSURANCE SERVICES",
+      "website": "www.primeiservices.com",
+      "address": "180 Old Tappan Rd. Unit 4203, Old Tappan, NJ 07675",
+      "taxEIN": "475365423",
+      "ownerFirstName": "MIN",
+      "ownerLastName": "CHOI",
+      "ownerPhone": "+12012854123",
+      "ownerEmail": "MIN@PRIMEISERVICES.COM",
+      "targetIndustries": [
+        "CONSTRUCTION",
+        "RESTAURANTS",
+        "BUILDINGS / LESSORS RISK",
+        "WHOLESALER/MFG",
+        "Builder's Risk"
+      ],
+      "brokers": [
+        {"name": "MIN CHOI", "phone": "2012854123", "email": "MIN@PRIMEISERVICES.COM"}
+      ],
+      "timezone": "America/New_York (GMT-04:00)"
+    },
+    {
+      "businessName": "Allee Agency Inc.",
+      "website": "https://www.alleeins.com/",
+      "address": "330 Mallory Station Rd. A2, TN 37067",
+      "taxEIN": "841524666",
+      "ownerFirstName": "Jamie",
+      "ownerLastName": "Allee",
+      "ownerPhone": "+19702743352",
+      "ownerEmail": "jamie@alleeins.com",
+      "licensedStates": ["Alabama", "Arizona", "California", "Colorado", "Georgia", "Kentucky", "Maryland", "Mississippi", "Missouri", "Nebraska", "Tennessee", "Texas", "Utah", "Virginia"],
+      "targetIndustries": [
+        "Construction",
+        "Restaurants",
+        "Retail - Main Street",
+        "PROPERTY - LRO",
+        "PRIVATE PRACTICE Doctors/Dentists"
+      ],
+      "brokers": [
+        {"name": "Ryan Allee", "phone": "6157175652", "email": "ryan@alleeins.com"},
+        {"name": "Will Rogers", "phone": "6156648321", "email": "will@alleeins.com"},
+        {"name": "Jim McKee", "phone": "6153770017", "email": "jim@alleeins.com"},
+        {"name": "Rayneshia Dawkins", "phone": "6157169945", "email": "rayneshia@alleeins.com"}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "Koosh Insurance",
+      "website": "www.koosh-ins.com",
+      "address": "4491 S State Road 7, Suite 202, Davie, Florida 33314",
+      "taxEIN": "331496484",
+      "ownerFirstName": "Itay",
+      "ownerLastName": "Sela",
+      "ownerPhone": "+19544956965",
+      "ownerEmail": "itai@koosh-ins.com",
+      "targetIndustries": [
+        "Commercial Real Estate",
+        "Residental Real Estate",
+        "Restaurants",
+        "Construction",
+        "Hotels"
+      ],
+      "brokers": [
+        {"name": "Itay Sela", "phone": "9544956965", "email": "itai@koosh-ins.com"}
+      ],
+      "timezone": "America/New_York (GMT-04:00)"
+    },
+    {
+      "businessName": "UWIB Risk Inc",
+      "website": "https://uwibrisk.com/",
+      "address": "228 Pearl St, Franklinn TN, 37064",
+      "taxEIN": "882866884",
+      "ownerFirstName": "Josh",
+      "ownerLastName": "Acosta",
+      "ownerPhone": "+16152340347",
+      "ownerEmail": "josh@uwib.com",
+      "targetIndustries": [
+        "Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)",
+        "Restaurants",
+        "Manufacturing",
+        "Property Manager"
+      ],
+      "brokers": [
+        {"name": "Eric Schirding", "phone": "6265785154", "email": "eschirding@uwib.com"},
+        {"name": "Jesse Nielsen", "phone": "6262046983", "email": "jesse@uwib.com"},
+        {"name": "David Murphy", "phone": "(951) 462-2405", "email": "david@uwib.com"}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "Insurable, Inc.",
+      "website": "InsurableInc.com",
+      "address": "1063 Harrison City Export Road, PA 15644",
+      "taxEIN": "87-2419722",
+      "ownerFirstName": "Brian",
+      "ownerLastName": "Bortz",
+      "ownerPhone": "+14122441000",
+      "ownerEmail": "bkb@insurableinc.com",
+      "targetIndustries": [
+        "Construction-Artisan",
+        "Workers Comp",
+        "Machine Shops",
+        "Physical fitness facilities GYMS",
+        "Auto Body and Mechanical Shops"
+      ],
+      "brokers": [
+        {"name": "Sharie Castle", "phone": "(412) 244-1000", "email": "SCastle@InsurableInc.com"},
+        {"name": "Ron Minnich", "phone": "(412) 244-1000", "email": "RMinnich@InsurableInc.com"},
+        {"name": "Brian Bortz", "phone": "(412) 244-1000", "email": "Brian@InsurableInc.com"}
+      ],
+      "timezone": "America/New_York (GMT-04:00)"
+    },
+    {
+      "businessName": "IMD INSURANCE & Financial Services LLC",
+      "website": "www.imdins.com",
+      "address": "8323 SOUTHWEST FREEWAY, Texas 77074",
+      "taxEIN": "853913349",
+      "ownerFirstName": "Jason",
+      "ownerLastName": "Jimenez",
+      "ownerPhone": "+18327547808",
+      "ownerEmail": "jason@imdins.com",
+      "targetIndustries": [
+        "Construction",
+        "R.E Investors Commercial (Multifamily)",
+        "Professional Services - Attorneys",
+        "MSP's",
+        "Restaurants"
+      ],
+      "brokers": [
+        {"name": "Jose Aleman", "phone": "+50584758462", "email": "jose@imdins.com"},
+        {"name": "Marlon Hazsuel", "phone": "+50558105735", "email": "marlon@imdins.com"}
+      ],
+      "timezone": "America/Chicago (GMT-05:00)"
+    },
+    {
+      "businessName": "Eastman Risk Advisors",
+      "website": "www.eastmanrisk.com",
+      "address": "270 E 200 S, Clearfield, UT 84015, USA",
+      "taxEIN": "93-4262214",
+      "ownerFirstName": "Coltan",
+      "ownerLastName": "Eastman",
+      "ownerPhone": "+18018880550",
+      "ownerEmail": "Coltan@Eastmanrisk.com",
+      "targetIndustries": [
+        "Commercial property",
+        "Electricians",
+        "Plumbers",
+        "HVAC",
+        "Lube/oil shops"
+      ],
+      "brokers": [
+        {"name": "Caleb Beickel", "phone": "8018880550", "email": "Caleb@Eastmanrisk.com"},
+        {"name": "Maddy Beickel", "phone": "8018880550", "email": "Maddy@Eastmanrisk.com"},
+        {"name": "Isabella Brown", "phone": "8018880550", "email": "Bella@Eastmanrisk.com"},
+        {"name": "Mari Higuera", "phone": "8018880550", "email": "Mari@Eastmanrisk.com"}
+      ],
+      "timezone": "America/Denver (GMT-06:00)"
+    }
+  ]
+}

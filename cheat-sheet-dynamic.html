@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Setters Cheat Sheet - Live</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-box .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-tab:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .filter-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #764ba2;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            color: #c62828;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .client-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+
+        .client-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .client-card.active {
+            border-left-color: #4CAF50;
+        }
+
+        .client-card.internal {
+            border-left-color: #9C27B0;
+            background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
+        }
+
+        .client-card.internal::before {
+            content: "🏢 INTERNAL";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #9C27B0;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .client-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .owner-name {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .status-badge.active {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .status-badge.internal {
+            background: #9C27B0;
+            color: white;
+        }
+
+        .status-badge.lost {
+            background: #757575;
+            color: white;
+        }
+
+        .client-info {
+            margin: 15px 0;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+            min-width: 80px;
+            font-size: 0.9em;
+        }
+
+        .info-value {
+            color: #333;
+            font-size: 0.95em;
+        }
+
+        .phone-number {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .states-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .state-tag {
+            background: #667eea;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+
+        .special-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .special-note strong {
+            color: #856404;
+        }
+
+        .last-updated {
+            background: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            color: #2e7d32;
+        }
+
+        .team-dropdown {
+            margin-top: 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .team-header {
+            background: #667eea;
+            color: white;
+            padding: 12px 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .team-header:hover {
+            background: #5568d3;
+        }
+
+        .team-header .arrow {
+            transition: transform 0.3s;
+        }
+
+        .team-header.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .team-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f9f9f9;
+        }
+
+        .team-content.active {
+            max-height: 500px;
+        }
+
+        .team-member {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .team-member:last-child {
+            border-bottom: none;
+        }
+
+        .team-member-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .team-member-contact {
+            font-size: 0.85em;
+            color: #666;
+            margin: 3px 0;
+        }
+
+        footer {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #666;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .refresh-info {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .client-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .header-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Appointment Setters Cheat Sheet - LIVE</h1>
+            <p style="color: #666; margin-top: 10px;">Live data from Airtable - Updates automatically</p>
+            <div class="header-info">
+                <div class="stat-box">
+                    <div class="number" id="totalClients">-</div>
+                    <div class="label">Active Clients</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="activeClients">-</div>
+                    <div class="label">Active Status</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="internalClients">-</div>
+                    <div class="label">Internal</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number" id="lastUpdate">-</div>
+                    <div class="label">Last Updated</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="refresh-info">
+            <strong>🔄 Live Data:</strong> This cheat sheet automatically updates from Airtable. Data refreshes every 5 minutes or when you reload the page.
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="🔍 Search clients by name, owner, phone, or business...">
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">All Clients</div>
+                <div class="filter-tab" data-filter="active">Active</div>
+                <div class="filter-tab" data-filter="internal">Internal</div>
+                <div class="filter-tab" data-filter="lost">Lost</div>
+            </div>
+        </div>
+
+        <div id="loadingIndicator" class="loading">
+            <div class="loading-spinner"></div>
+            <p>Loading client data from Airtable...</p>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <strong>⚠️ Error Loading Data:</strong> <span id="errorText"></span>
+            <br><br>
+            <button onclick="loadClientData()" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                🔄 Retry
+            </button>
+        </div>
+
+        <div class="clients-grid" id="clientsGrid" style="display: none;">
+            <!-- Client cards will be populated here -->
+        </div>
+
+        <footer>
+            <p><strong>Live Data Source:</strong> Airtable Base - <span id="baseInfo">app3gCaXd7bblkw7L</span></p>
+            <p style="margin-top: 10px; color: #999;">Auto-refresh every 5 minutes • Last API call: <span id="lastApiCall">-</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration
+        const AIRTABLE_API_KEY = 'patOe0Tj79vik2Qrx.bede69a12d629090462fb258038c527dab560d54ce235edf86bb22d646bd7aa8';
+        const AIRTABLE_BASE_ID = 'app3gCaXd7bblkw7L';
+        const AIRTABLE_TABLE_NAME = 'Clients';
+
+        let allClients = [];
+        let filteredClients = [];
+        let currentFilter = 'all';
+        let refreshInterval;
+
+        // Embedded data (to avoid CORS issues with file:// protocol)
+        const setterMapping = {"629-235-5679":"Brendan Butler","310-620-9887":"Brendan Butler","708-905-9583":"Brendan Butler","309-340-4008":"Brendan Butler","561-556-4126":"Brendan Butler","626-657-2536":"Brendan Butler","954-495-6965":"Brendan Butler","702-819-9172":"Brendan Butler","412-472-7504":"Brendan Butler","385-526-5174":"Jacques Lebleu","443-390-5510":"Jacques Lebleu","832-754-7808":"Jacques Lebleu","201-474-2736":"Jacques Lebleu","615-880-8063":"Jacques Lebleu","219-327-7606":"Jacques Lebleu","385-360-8285":"Jacques Lebleu"};
+
+        const onboardingDataRaw = {"clients":[{"businessName":"The Bulow Group, Inc","website":"thebulowgroup.com","address":"8101 183rd Street, IL 60487","taxEIN":"","ownerPhone":"+17089066300","ownerEmail":"tbulow@thebulowgroup.com","targetIndustries":["Restaurant Groups","Construction","Hardware Stores","Manufacturing/Food Distributors","Waste Haulers & Garbage"],"brokers":[{"name":"Nick Hogevenn","phone":"","email":""},{"name":"Tom DeMatteo","phone":"","email":""},{"name":"Bobby Daw","phone":"","email":""},{"name":"Rob Randick","phone":"","email":""}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"GRIT Insurance","website":"www.gritinsurance.com","address":"5525 S 900 E Ste 345, UT 84117","taxEIN":"820694963","ownerPhone":"+18019488091","ownerEmail":"Kirk@gritinsurance.com","licensedStates":["Utah","Idaho","Colorado","Arizona","Texas","Oregon","Washington","California","Montana","Nevada","North Dakota","Wyoming"],"targetIndustries":["Commercial Contractors","Landscape Contractors","Excavation Contractors","Manufacturing"],"brokers":[{"name":"Kirk Chester","phone":"801-948-8091","email":"Kirk@gritinsurance.com"},{"name":"Justin Peterson","phone":"801-948-8090","email":"Justin@gritinsurance.com"},{"name":"Easton Rentmeister","phone":"801-948-8092","email":"Easton@gritinsurance.com"}],"timezone":"America/Denver (GMT-06:00)"},{"businessName":"Ingram Insurance Agency, LLC","website":"www.theingramagency.com","address":"105 Glen Oak Blvd. Suite 200 Hendersonville, TN 37075","taxEIN":"853625213","ownerPhone":"+16155575436","ownerEmail":"chris@theingramagency.com","licensedStates":["New Hampshire","Utah","Wyoming","Alabama","Arkansas","Delaware","Florida","Georgia","Idaho","Illinois","Indiana","Iowa","Kentucky","Maryland","Minnesota","Mississippi","Nevada","Ohio","Oklahoma","Oregon","Pennsylvania","South Carolina","Tennessee","Texas","Virginia","Washington","Colorado"],"targetIndustries":["Artisan Contractor, NO General Contractors","Restaurants","Professional Services - anything in an office","HVAC/ELEC/PLUMBING Contractors","WORK COMP - All classes"],"brokers":[{"name":"Chris Ingram","phone":"615-675-5154","email":""}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"WEER INSURANCE AND FINANCIAL SERVICES, INC","website":"www.weeryouragent.com","address":"2409 WESTWARD DR, Illinois 60081","taxEIN":"463095403","ownerPhone":"+13093032698","ownerEmail":"scott@weeryouragent.com","licensedStates":["Illinois","Indiana","Wisconsin","Ohio","Florida","California","Texas","Georgia"],"targetIndustries":["Artisian & General Contractors","Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations","Restaurants","Bars - only in IL & WI","Commercial Auto"],"brokers":[{"name":"Tiffany Trevino","phone":"8472781099 ext 104","email":"tiffany@weeryouragent.com"},{"name":"Steve Gallardo","phone":"8472781099 ext 102","email":"steve@weeryouragent.com"},{"name":"Sherrie Hurley","phone":"8472781099 ext","email":"sherrie@weeryouragent.com"},{"name":"Kasia Biedrawa","phone":"8472781099 ext 105","email":"kasia@weeryouragent.com"}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"Arroyo Insurance Services - South Bay","website":"www.arroyosouthbay.com","address":"5000 E Spring Street, Suite 570, Long Beach, CA 90815","taxEIN":"204200742","ownerPhone":"+13103568206","ownerEmail":"robertk@arroyoins.com","targetIndustries":["Wholesale Distribution","Manufacturing","Commercial Real Estate - Industrial, Shopping Centers, Apartments, Property Managers","Construction - Solar, Roofing, Plumbing, HVAC","Hospitality - Restaurants, Bar/Tavern"],"brokers":[{"name":"Robert Kelly","phone":"3103568206","email":"robertk@arroyoins.com"},{"name":"Ryan McDonald","phone":"4243985624","email":"ryanm@arroyoins.com"},{"name":"Seamus McDonald","phone":"3103568214","email":"seamusm@arroyoins.com"},{"name":"William Dessert","phone":"3103568210","email":"williamd@arroyoins.com"}],"timezone":"America/Los_Angeles (GMT-07:00)"},{"businessName":"STATE FARM - TIM MAUDSLEY AGENT","website":"www.insurancequote-nv.com","address":"8170 S EASTERN AVE #11 LAS VEGAS NV 89123","taxEIN":"331444062","ownerPhone":"+17029984545","ownerEmail":"tim@insurancequote-nv.com","targetIndustries":["ARTISAN SERVICE CONTRACTORS","HOMEOWNERS ASSOCIATIONS","RESTAURANTS","AUTO REPAIR","LESSOR RISK - BUILDING OWNERS"],"brokers":[{"name":"KADEN MAALOUF","phone":"7029984545","email":"KADEN.MAALOUF.VADRFZ@STATEFARM.COM"},{"name":"JEREMY WINCHESTER","phone":"7029984545","email":"JEREMY.WINCHESTER.VAB79Y@STATEFARM.COM"},{"name":"GABRIELA ANDRADE","phone":"7029984545","email":"GABRIELA.ANDRADE.VADYCA@STATEFARM.COM"}],"timezone":"America/Los_Angeles (GMT-07:00)"},{"businessName":"PRIME INSURANCE SERVICES","website":"www.primeiservices.com","address":"180 Old Tappan Rd. Unit 4203, Old Tappan, NJ 07675","taxEIN":"475365423","ownerPhone":"+12012854123","ownerEmail":"MIN@PRIMEISERVICES.COM","targetIndustries":["CONSTRUCTION","RESTAURANTS","BUILDINGS / LESSORS RISK","WHOLESALER/MFG","Builder's Risk"],"brokers":[{"name":"MIN CHOI","phone":"2012854123","email":"MIN@PRIMEISERVICES.COM"}],"timezone":"America/New_York (GMT-04:00)"},{"businessName":"Allee Agency Inc.","website":"https://www.alleeins.com/","address":"330 Mallory Station Rd. A2, TN 37067","taxEIN":"841524666","ownerPhone":"+19702743352","ownerEmail":"jamie@alleeins.com","licensedStates":["Alabama","Arizona","California","Colorado","Georgia","Kentucky","Maryland","Mississippi","Missouri","Nebraska","Tennessee","Texas","Utah","Virginia"],"targetIndustries":["Construction","Restaurants","Retail - Main Street","PROPERTY - LRO","PRIVATE PRACTICE Doctors/Dentists"],"brokers":[{"name":"Ryan Allee","phone":"6157175652","email":"ryan@alleeins.com"},{"name":"Will Rogers","phone":"6156648321","email":"will@alleeins.com"},{"name":"Jim McKee","phone":"6153770017","email":"jim@alleeins.com"},{"name":"Rayneshia Dawkins","phone":"6157169945","email":"rayneshia@alleeins.com"}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"Koosh Insurance","website":"www.koosh-ins.com","address":"4491 S State Road 7, Suite 202, Davie, Florida 33314","taxEIN":"331496484","ownerPhone":"+19544956965","ownerEmail":"itai@koosh-ins.com","targetIndustries":["Commercial Real Estate","Residental Real Estate","Restaurants","Construction","Hotels"],"brokers":[{"name":"Itay Sela","phone":"9544956965","email":"itai@koosh-ins.com"}],"timezone":"America/New_York (GMT-04:00)"},{"businessName":"UWIB Risk Inc","website":"https://uwibrisk.com/","address":"228 Pearl St, Franklinn TN, 37064","taxEIN":"882866884","ownerPhone":"+16152340347","ownerEmail":"josh@uwib.com","targetIndustries":["Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)","Restaurants","Manufacturing","Property Manager"],"brokers":[{"name":"Eric Schirding","phone":"6265785154","email":"eschirding@uwib.com"},{"name":"Jesse Nielsen","phone":"6262046983","email":"jesse@uwib.com"},{"name":"David Murphy","phone":"(951) 462-2405","email":"david@uwib.com"}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"Insurable, Inc.","website":"InsurableInc.com","address":"1063 Harrison City Export Road, PA 15644","taxEIN":"87-2419722","ownerPhone":"+14122441000","ownerEmail":"bkb@insurableinc.com","targetIndustries":["Construction-Artisan","Workers Comp","Machine Shops","Physical fitness facilities GYMS","Auto Body and Mechanical Shops"],"brokers":[{"name":"Sharie Castle","phone":"(412) 244-1000","email":"SCastle@InsurableInc.com"},{"name":"Ron Minnich","phone":"(412) 244-1000","email":"RMinnich@InsurableInc.com"},{"name":"Brian Bortz","phone":"(412) 244-1000","email":"Brian@InsurableInc.com"}],"timezone":"America/New_York (GMT-04:00)"},{"businessName":"IMD INSURANCE & Financial Services LLC","website":"www.imdins.com","address":"8323 SOUTHWEST FREEWAY, Texas 77074","taxEIN":"853913349","ownerPhone":"+18327547808","ownerEmail":"jason@imdins.com","targetIndustries":["Construction","R.E Investors Commercial (Multifamily)","Professional Services - Attorneys","MSP's","Restaurants"],"brokers":[{"name":"Jose Aleman","phone":"+50584758462","email":"jose@imdins.com"},{"name":"Marlon Hazsuel","phone":"+50558105735","email":"marlon@imdins.com"}],"timezone":"America/Chicago (GMT-05:00)"},{"businessName":"Eastman Risk Advisors","website":"www.eastmanrisk.com","address":"270 E 200 S, Clearfield, UT 84015, USA","taxEIN":"93-4262214","ownerPhone":"+18018880550","ownerEmail":"Coltan@Eastmanrisk.com","targetIndustries":["Commercial property","Electricians","Plumbers","HVAC","Lube/oil shops"],"brokers":[{"name":"Caleb Beickel","phone":"8018880550","email":"Caleb@Eastmanrisk.com"},{"name":"Maddy Beickel","phone":"8018880550","email":"Maddy@Eastmanrisk.com"},{"name":"Isabella Brown","phone":"8018880550","email":"Bella@Eastmanrisk.com"},{"name":"Mari Higuera","phone":"8018880550","email":"Mari@Eastmanrisk.com"}],"timezone":"America/Denver (GMT-06:00)"}]};
+
+        // Helper function to normalize phone numbers
+        function normalizePhone(phone) {
+            if (!phone) return '';
+            return phone.replace(/\D/g, '').slice(-10);
+        }
+
+        // Build lookup map by phone
+        let onboardingData = {};
+        onboardingDataRaw.clients.forEach(client => {
+            const phone = normalizePhone(client.ownerPhone);
+            onboardingData[phone] = client;
+        });
+
+        // DOM Elements
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorMessage = document.getElementById('errorMessage');
+        const clientsGrid = document.getElementById('clientsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            loadClientData();
+            setupEventListeners();
+            startAutoRefresh();
+        });
+
+        function toggleTeam(cardId) {
+            const header = event.currentTarget;
+            const content = document.getElementById(`${cardId}-team`);
+
+            header.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filterClients(searchTerm, currentFilter);
+            });
+
+            // Filter tabs
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    currentFilter = tab.dataset.filter;
+                    filterClients(searchInput.value.toLowerCase(), currentFilter);
+                });
+            });
+        }
+
+        async function loadClientData() {
+            try {
+                showLoading();
+                hideError();
+
+                const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}?maxRecords=100`, {
+                    headers: {
+                        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                allClients = data.records;
+                
+                updateStats();
+                filterClients('', currentFilter);
+                hideLoading();
+                updateLastApiCall();
+
+            } catch (error) {
+                console.error('Error loading client data:', error);
+                showError(`Failed to load client data: ${error.message}`);
+                hideLoading();
+            }
+        }
+
+        function updateStats() {
+            const totalClients = allClients.length;
+            const activeClients = allClients.filter(client => 
+                client.fields.Status === 'Active'
+            ).length;
+            const internalClients = allClients.filter(client => 
+                client.fields.Status === 'Internal'
+            ).length;
+
+            document.getElementById('totalClients').textContent = totalClients;
+            document.getElementById('activeClients').textContent = activeClients;
+            document.getElementById('internalClients').textContent = internalClients;
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+        }
+
+        function filterClients(searchTerm, filter) {
+            const excludedClients = [
+                'barnsley fern',
+                'crum',
+                'texas select',
+                'aims',
+                'one choice',
+                'rocket flood',
+                'fortified',
+                'tekrisq',
+                'kortsen',
+                'evan sanders',
+                'freedom',
+                'lg xortez',
+                'select',
+                'midland commerce'
+            ];
+
+            filteredClients = allClients.filter(client => {
+                const businessName = (client.fields['Business Name'] || '').toLowerCase();
+
+                // Exclude Lost status clients
+                if (client.fields.Status === 'Lost') {
+                    return false;
+                }
+
+                // Exclude specific clients
+                if (excludedClients.some(excluded => businessName.includes(excluded))) {
+                    return false;
+                }
+
+                const matchesSearch = !searchTerm || (
+                    (client.fields['Business Name'] && client.fields['Business Name'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['Owner Full Name'] && client.fields['Owner Full Name'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['Owner Phone'] && client.fields['Owner Phone'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['Owner Email'] && client.fields['Owner Email'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['Address Line 1'] && client.fields['Address Line 1'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['City'] && client.fields['City'].toLowerCase().includes(searchTerm)) ||
+                    (client.fields['State'] && client.fields['State'].toLowerCase().includes(searchTerm))
+                );
+
+                const matchesFilter = filter === 'all' ||
+                    (filter === 'active' && client.fields.Status === 'Active') ||
+                    (filter === 'internal' && client.fields.Status === 'Internal');
+
+                return matchesSearch && matchesFilter;
+            });
+
+            renderClients();
+        }
+
+        function renderClients() {
+            if (filteredClients.length === 0) {
+                clientsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <h3>No clients found</h3>
+                        <p>Try adjusting your search or filter criteria.</p>
+                    </div>
+                `;
+                clientsGrid.style.display = 'grid';
+                return;
+            }
+
+            const clientsHtml = filteredClients.map(client => {
+                const fields = client.fields;
+                const status = fields.Status || 'Unknown';
+                const statusClass = status.toLowerCase();
+
+                const phoneNorm = normalizePhone(fields['Owner Phone']);
+                const onboarding = onboardingData[phoneNorm] || {};
+
+                // Format phone for setter lookup: get last 10 digits and format as XXX-XXX-XXXX
+                const phoneForSetter = fields['Owner Phone'] ?
+                    fields['Owner Phone'].replace(/\D/g, '').slice(-10).replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3') : '';
+                const setter = setterMapping[phoneForSetter] || 'Unassigned';
+
+                const phoneNumber = fields['Owner Phone'] ?
+                    fields['Owner Phone'].replace(/\D/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3') :
+                    'Not provided';
+
+                // Use licensed states from onboarding data if available, otherwise from Airtable
+                const licensedStates = onboarding.licensedStates && onboarding.licensedStates.length > 0 ?
+                    onboarding.licensedStates.join(', ') :
+                    (fields['Licensed States'] ?
+                        fields['Licensed States'].map(state => state.split(' ')[0]).join(', ') :
+                        'Not specified');
+
+                const insuranceTypes = fields['Types of Insurance Sold'] ?
+                    fields['Types of Insurance Sold'].map(type => type.split(' - ')[0]).join(', ') :
+                    'Not specified';
+
+                const targetIndustries = onboarding.targetIndustries ?
+                    onboarding.targetIndustries.join(', ') : '';
+
+                const brokers = onboarding.brokers || [];
+                const cardId = `card-${client.id}`;
+
+                return `
+                    <div class="client-card ${statusClass}" data-status="${status}">
+                        <div class="client-header">
+                            <div>
+                                <div class="client-name">${fields['Business Name'] || 'Unnamed Business'}</div>
+                                <div class="owner-name">
+                                    Owner: ${fields['Owner Full Name'] || 'Not provided'}
+                                    ${phoneNumber !== 'Not provided' ? `• ${phoneNumber}` : ''}
+                                </div>
+                                <div style="margin-top: 5px; color: #667eea; font-weight: bold; font-size: 0.9em;">
+                                    📞 Setter: ${setter}
+                                </div>
+                            </div>
+                            <span class="status-badge ${statusClass}">${status}</span>
+                        </div>
+
+                        <div class="client-info">
+                            ${fields['Owner Email'] ? `
+                                <div class="info-row">
+                                    <span class="info-label">📧 Email:</span>
+                                    <span class="info-value">${fields['Owner Email']}</span>
+                                </div>
+                            ` : ''}
+
+                            ${onboarding.website ? `
+                                <div class="info-row">
+                                    <span class="info-label">🌐 Website:</span>
+                                    <span class="info-value"><a href="https://${onboarding.website.replace(/^https?:\/\//, '')}" target="_blank">${onboarding.website}</a></span>
+                                </div>
+                            ` : ''}
+
+                            ${onboarding.address ? `
+                                <div class="info-row">
+                                    <span class="info-label">📍 Address:</span>
+                                    <span class="info-value">${onboarding.address}</span>
+                                </div>
+                            ` : ''}
+
+                            ${onboarding.taxEIN ? `
+                                <div class="info-row">
+                                    <span class="info-label">🆔 TAX EIN:</span>
+                                    <span class="info-value">${onboarding.taxEIN}</span>
+                                </div>
+                            ` : ''}
+
+                            <div class="info-row">
+                                <span class="info-label">🗺️ Licensed:</span>
+                                <span class="info-value">${licensedStates}</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span class="info-label">🛡️ Insurance:</span>
+                                <span class="info-value">${insuranceTypes}</span>
+                            </div>
+
+                            ${targetIndustries ? `
+                                <div class="info-row">
+                                    <span class="info-label">🎯 Target:</span>
+                                    <span class="info-value">${targetIndustries}</span>
+                                </div>
+                            ` : ''}
+
+                            ${fields['Appointments Total'] ? `
+                                <div class="special-note" style="background: #e8f5e9; border-left-color: #4CAF50;">
+                                    <strong>📊 Performance:</strong>
+                                    ${fields['Appointments Total']} Appts •
+                                    ${fields['Leads Total (Filtered)'] || 0} Leads •
+                                    ${fields['Booking Rate'] ? fields['Booking Rate'].toFixed(1) + '%' : '0%'} Rate
+                                    ${fields['Term Days Remaining'] ? ` • ${fields['Term Days Remaining']} days left` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        ${brokers.length > 0 ? `
+                            <div class="team-dropdown">
+                                <div class="team-header" onclick="toggleTeam('${cardId}')">
+                                    <span>👥 Team (${brokers.length} ${brokers.length === 1 ? 'member' : 'members'})</span>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <div class="team-content" id="${cardId}-team">
+                                    ${brokers.map(b => `
+                                        <div class="team-member">
+                                            <div class="team-member-name">${b.name}</div>
+                                            ${b.phone ? `<div class="team-member-contact">📞 ${b.phone}</div>` : ''}
+                                            ${b.email ? `<div class="team-member-contact">📧 ${b.email}</div>` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <div class="last-updated">
+                            <strong>📅 Last Updated:</strong> ${new Date(fields['Status Modified Time'] || client.createdTime).toLocaleDateString()}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            clientsGrid.innerHTML = clientsHtml;
+            clientsGrid.style.display = 'grid';
+        }
+
+        function showLoading() {
+            loadingIndicator.style.display = 'block';
+            clientsGrid.style.display = 'none';
+            errorMessage.style.display = 'none';
+        }
+
+        function hideLoading() {
+            loadingIndicator.style.display = 'none';
+        }
+
+        function showError(message) {
+            errorMessage.style.display = 'block';
+            document.getElementById('errorText').textContent = message;
+            clientsGrid.style.display = 'none';
+        }
+
+        function hideError() {
+            errorMessage.style.display = 'none';
+        }
+
+        function updateLastApiCall() {
+            document.getElementById('lastApiCall').textContent = new Date().toLocaleTimeString();
+        }
+
+        function startAutoRefresh() {
+            // Refresh every 5 minutes
+            refreshInterval = setInterval(() => {
+                console.log('Auto-refreshing client data...');
+                loadClientData();
+            }, 5 * 60 * 1000);
+        }
+
+        // Clean up interval on page unload
+        window.addEventListener('beforeunload', () => {
+            if (refreshInterval) {
+                clearInterval(refreshInterval);
+            }
+        });
+
+        // Manual refresh function (called by retry button)
+        window.loadClientData = loadClientData;
+    </script>
+</body>
+</html>

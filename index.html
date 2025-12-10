@@ -3389,7 +3389,7 @@
                     <div class="command-bar-left">
                         <div class="pills" role="tablist">
                             <button class="pill" id="pill-all" type="button" role="tab" aria-selected="true" aria-label="All clients">All</button>
-                            <button class="pill" id="pill-brendan" type="button" role="tab" aria-selected="false" aria-label="Brendan clients">Brendan (<span id="count-brendan">9</span>)</button>
+                            <button class="pill" id="pill-al" type="button" role="tab" aria-selected="false" aria-label="Al clients">Al (<span id="count-al">9</span>)</button>
                             <button class="pill" id="pill-jacques" type="button" role="tab" aria-selected="false" aria-label="Jacques clients">Jacques (<span id="count-jacques">7</span>)</button>
                         </div>
                     </div>
@@ -4230,7 +4230,7 @@
                 website: "https://www.alleeins.com/",
                 address: "330 Mallory Station Rd. A2, TN 37067",
                 timezone: "Central Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "IyfLhHUtUSEGC6sDkauA",
                 ghlToken: "pit-455eebff-edb1-4464-accc-a16397903712",
                 licensedStates: ["AL", "AZ", "CA", "CO", "GA", "KY", "MD", "MS", "MO", "NE", "TN", "TX", "UT", "VA"],
@@ -4250,7 +4250,7 @@
                 website: "www.arroyosouthbay.com",
                 address: "5000 E Spring Street, Suite 570, Long Beach, CA 90815",
                 timezone: "Pacific Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "fVxI0k6yEhyJQacx8enT",
                 ghlToken: "pit-c59b88cb-87e2-4c83-bca2-d02af75975d2",
                 licensedStates: ["CA"],
@@ -4270,7 +4270,7 @@
                 website: "thebulowgroup.com",
                 address: "8101 183rd Street, IL 60487",
                 timezone: "Central Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 licensedStates: ["IL"],
                 targetIndustries: ["Restaurant Groups", "Construction", "Hardware Stores", "Manufacturing/Food Distributors", "Waste Haulers & Garbage"],
                 brokers: [
@@ -4290,7 +4290,7 @@
                 website: "www.weeryouragent.com",
                 address: "2409 WESTWARD DR, Illinois 60081",
                 timezone: "Central Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "o5Lq7b7mWEgDRNIEoaNE",
                 ghlToken: "pit-fb2f0fa0-aa2d-4ce2-bbc7-8200aaa4045d",
                 licensedStates: ["IL", "IN", "WI", "OH", "FL", "CA", "TX", "GA"],
@@ -4310,7 +4310,7 @@
                 website: "InsuranceExpress.com",
                 address: "2005 Vista Parkway Ste 200, FL 33411",
                 timezone: "Eastern Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "EkiIDaFam2lOvxlhECE4",
                 ghlToken: "pit-a44e3c0a-001e-43ac-bf60-4fa13cb69f19",
                 licensedStates: ["FL", "NY"],
@@ -4327,7 +4327,7 @@
                 website: "https://uwibrisk.com/",
                 address: "228 Pearl St, Franklin TN, 37064",
                 timezone: "Central Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 licensedStates: ["TN"],
                 targetIndustries: ["Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)", "Restaurants", "Manufacturing", "Property Manager"],
                 brokers: [
@@ -4346,7 +4346,7 @@
                 website: "www.koosh-ins.com",
                 address: "4491 S State Road 7, Suite 202, Davie, Florida 33314",
                 timezone: "Eastern Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "uGudtHjAyBG3UolKDMda",
                 ghlToken: "pit-f16a5f65-9fe1-4a71-bec3-8f89298a97c3",
                 licensedStates: ["FL"],
@@ -4363,7 +4363,7 @@
                 website: "www.insurancequote-nv.com",
                 address: "8170 S EASTERN AVE #11 LAS VEGAS NV 89123",
                 timezone: "Pacific Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "hJH7L11qfWiyGXCd4gyV",
                 ghlToken: "pit-7a0ec125-fcb7-4557-81ae-54437805dc46",
                 licensedStates: ["NV"],
@@ -4382,7 +4382,7 @@
                 website: "InsurableInc.com",
                 address: "1063 Harrison City Export Road, PA 15644",
                 timezone: "Eastern Standard Time",
-                setter: "Brendan Butler",
+                setter: "Al Butler",
                 ghlLocationId: "1COZfVJIMdxWtPrV17RE",
                 ghlToken: "pit-4cc6b618-ab7c-40ba-a431-4bd2a8b7bf23",
                 licensedStates: ["PA"],
@@ -5391,7 +5391,7 @@
                 const targets = normalizeTargets(client.targetIndustries);
 
                 // Determine setter attribute
-                const setterAttr = client.setter.toLowerCase().includes('brendan') ? 'brendan' : 'jacques';
+                const setterAttr = client.setter.toLowerCase().includes('al') ? 'al' : 'jacques';
 
                 // Generate client ID for notes
                 const clientId = client.businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -5609,18 +5609,18 @@
 
         function updatePillCounts() {
             const cards = document.querySelectorAll('.client-card');
-            let brendanCount = 0;
+            let alCount = 0;
             let jacquesCount = 0;
 
             cards.forEach(card => {
                 if (card.style.display !== 'none') {
                     const setter = card.getAttribute('data-setter');
-                    if (setter === 'brendan') brendanCount++;
+                    if (setter === 'al') alCount++;
                     if (setter === 'jacques') jacquesCount++;
                 }
             });
 
-            document.getElementById('count-brendan').textContent = brendanCount;
+            document.getElementById('count-al').textContent = alCount;
             document.getElementById('count-jacques').textContent = jacquesCount;
         }
 
@@ -5636,7 +5636,7 @@
 
         // Pill event listeners
         document.getElementById('pill-all').addEventListener('click', () => applyFilter('all'));
-        document.getElementById('pill-brendan').addEventListener('click', () => applyFilter('brendan'));
+        document.getElementById('pill-al').addEventListener('click', () => applyFilter('al'));
         document.getElementById('pill-jacques').addEventListener('click', () => applyFilter('jacques'));
 
         // Refresh button event listener

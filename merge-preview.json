@@ -1,0 +1,43 @@
+{
+  "matched": [
+    {
+      "businessName": "WEER INSURANCE AND FINANCIAL SERVICES, INC",
+      "matchScore": 1,
+      "additions": {
+        "licensedStates": [],
+        "targetIndustries": [
+          "Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations"
+        ],
+        "brokers": []
+      }
+    },
+    {
+      "businessName": "Koosh Insurance",
+      "matchScore": 1,
+      "additions": {
+        "licensedStates": [],
+        "targetIndustries": [
+          "Residental Real Estate"
+        ],
+        "brokers": []
+      }
+    },
+    {
+      "businessName": "UWIB Risk Inc",
+      "matchScore": 1,
+      "additions": {
+        "licensedStates": [],
+        "targetIndustries": [
+          "Artisan Contractors (hvac, Plumbing, Eletrical, Roofing, Etc)"
+        ],
+        "brokers": []
+      }
+    }
+  ],
+  "unmatched": [],
+  "totalAdditions": {
+    "licensedStates": 0,
+    "targetIndustries": 3,
+    "brokers": 0
+  }
+}

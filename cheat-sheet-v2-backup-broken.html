@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Setters Cheat Sheet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            /* Backgrounds - Warm Neutrals */
+            --bg: #faf8f5;           /* warm off-white */
+            --appbar: rgba(250, 248, 245, 0.85);
+            --panel: #ffffff;
+
+            /* Text */
+            --text: #1a1d1f;          /* warm black */
+            --text-dim: #6f7680;      /* warm gray */
+            --muted-text: #9ca3af;
+
+            /* Borders & lines */
+            --border: #e8e4df;        /* warm border */
+            --border-strong: #d4cfc7;
+
+            /* Accents */
+            --primary: #5b4cff;       /* vibrant purple */
+            --primary-2: #4a3de6;
+            --accent: #ff6b35;        /* warm coral */
+            --accent-2: #f97316;
+            --pill-bg: #ffffff;
+            --pill-hover: #fef3f2;
+
+            /* Gradient for business names */
+            --gradient-start: #667eea;
+            --gradient-end: #764ba2;
+
+            /* State */
+            --success: #00c37a;
+            --warning: #ffb300;
+            --danger:  #e5484d;
+
+            /* Radii & shadows */
+            --radius: 12px;
+            --shadow-sm: 0 1px 3px rgba(26,29,31,0.06), 0 1px 2px rgba(26,29,31,0.04);
+            --shadow-md: 0 4px 12px rgba(26,29,31,0.08), 0 2px 4px rgba(26,29,31,0.04);
+            --shadow-hover: 0 12px 32px rgba(91,76,255,0.12), 0 4px 16px rgba(26,29,31,0.08);
+            --focus: 0 0 0 3px rgba(91,76,255,0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: var(--bg);
+            color: var(--text-dim);
+            font-family: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3 {
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 28px;
+            letter-spacing: -0.015em;
+            color: var(--text);
+            margin: 0 0 2px 0;
+        }
+
+        .brand .dot {
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Utility classes */
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 16px;
+            transition: box-shadow .18s ease, transform .18s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+
+        .section {
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            box-shadow: var(--shadow-sm);
+            transition: background .15s, border-color .15s, box-shadow .15s;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: var(--focus);
+        }
+
+        .btn-ghost {
+            background: #f7f9fe;
+        }
+
+        .btn-ghost:hover {
+            background: #eef3fd;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 9999px;
+            border: 1px solid var(--border);
+            background: var(--pill-bg);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pill:hover {
+            background: var(--pill-hover);
+            border-color: var(--border-strong);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pill:focus-visible {
+            outline: none;
+            box-shadow: var(--focus);
+        }
+
+        .pill[aria-selected="true"],
+        .pill.active {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+            font-weight: 700;
+        }
+
+        .pill[aria-selected="true"]:hover,
+        .pill.active:hover {
+            background: var(--primary-2);
+            border-color: var(--primary-2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            background: #f2f5fc;
+            color: var(--muted-text);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .input::placeholder {
+            color: #8a94a6;
+        }
+
+        .input:focus {
+            outline: none;
+            box-shadow: var(--focus);
+        }
+
+        .popover {
+            position: absolute;
+            z-index: 1000;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            min-width: 240px;
+            max-height: 300px;
+            overflow: auto;
+            padding: 6px;
+            transform: translateY(8px);
+        }
+
+        .popover-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
+            color: var(--text-dim);
+        }
+
+        .popover-item:hover {
+            background: #f6f8fe;
+            color: var(--text);
+        }
+
+        .avatar {
+            width: 22px;
+            height: 22px;
+            border-radius: 9999px;
+            display: grid;
+            place-items: center;
+            background: #e9ecf6;
+            color: #55657e;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 6px 0;
+        }
+
+        .team-control {
+            position: relative;
+        }
+
+        .team-member-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .team-member-contact {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* Header styles */
+        .appbar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: var(--appbar);
+            backdrop-filter: saturate(1.1) blur(6px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .appbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 0;
+        }
+
+        .pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .search-container {
+            margin-bottom: 12px;
+            margin-top: 16px;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .client-card {
+            background: var(--panel);
+            border: 1px solid #d9e2ef;  /* updated card border */
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            padding: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .client-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            border-color: rgba(91, 76, 255, 0.2);
+        }
+
+        .card-head {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .card-head-left {
+            min-width: 0;
+        }
+
+        .card-head-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .business-name {
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 50%, var(--gradient-start) 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            margin: 0 0 6px 0;
+            line-height: 1.3;
+            animation: gradientShift 6s ease infinite;
+        }
+
+        .info-line {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin: 2px 0;
+        }
+
+        .info-line.setter {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .owner-block {
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .owner-block div {
+            margin-bottom: 2px;
+        }
+
+        .client-info {
+            margin: 0;
+        }
+
+        .targets-section,
+        .licensed-section {
+            margin-top: 12px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .targets {
+            margin: 0;
+            padding-left: 18px;
+            max-height: 8.5em;
+            overflow: auto;
+        }
+
+        .targets li {
+            list-style: disc;
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.35;
+            margin: 2px 0;
+        }
+
+        .licensed {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+
+        .setter-badge {
+            text-align: right;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .setter-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 12px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .ghl-number {
+            font-size: 11px;
+            color: var(--muted-text);
+            display: block;
+        }
+
+        .timezone-info {
+            font-size: 13px;
+            color: var(--text-dim);
+            margin: 2px 0;
+        }
+
+        .timezone-info::before {
+            content: '🕐 ';
+        }
+
+        @media (max-width: 768px) {
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 16px;
+            }
+
+            .appbar h1,
+            .appbar .brand {
+                font-size: 22px;
+            }
+
+            .card-head {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .card-head-right {
+                align-items: flex-start;
+            }
+
+            .owner-block {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 12px;
+            }
+
+            .appbar h1,
+            .appbar .brand {
+                font-size: 20px;
+            }
+
+            .pills {
+                width: 100%;
+            }
+
+            .pill {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .client-card {
+                padding: 12px;
+            }
+
+            .appbar-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+
+        /* ============= MODAL STYLES ============= */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal[hidden] {
+            display: none;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 29, 31, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--panel);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(26, 29, 31, 0.25);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            line-height: 1;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--pill-hover);
+            color: var(--text);
+        }
+
+        .modal-body {
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            padding-top: 16px;
+            margin-top: auto;
+        }
+
+        /* ============= FORM STYLES ============= */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--text);
+            background: var(--panel);
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(91, 76, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ============= BUTTON STYLES ============= */
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--pill-hover);
+            border-color: var(--border-strong);
+        }
+
+        .btn-link {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-link:hover {
+            color: var(--primary-2);
+            text-decoration: underline;
+        }
+
+        .btn-notes {
+            margin-top: 8px;
+            font-size: 13px !important;
+            padding: 6px 10px !important;
+        }
+
+        /* ============= NOTES SECTION ============= */
+        .client-notes {
+            margin-top: 16px;
+        }
+
+        .notes-section {
+            background: rgba(91, 76, 255, 0.04);
+            border: 1px solid rgba(91, 76, 255, 0.15);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .notes-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .notes-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .notes-summary {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-dim);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ============= HISTORY MODAL ============= */
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .history-item {
+            padding: 14px;
+            background: var(--bg);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .history-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .history-type {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--primary);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .history-date {
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .history-author {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .history-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <header class="appbar">
+        <div class="container appbar-inner">
+            <h1 class="brand">Cheat Sheet<span class="dot">.</span></h1>
+            <div class="pills" role="tablist">
+                <button class="pill" id="pill-all" type="button" role="tab" aria-selected="true" aria-label="All clients">All</button>
+                <button class="pill" id="pill-brendan" type="button" role="tab" aria-selected="false" aria-label="Brendan clients">Brendan's Clients (<span id="count-brendan">9</span>)</button>
+                <button class="pill" id="pill-jacques" type="button" role="tab" aria-selected="false" aria-label="Jacques clients">Jacques's Clients (<span id="count-jacques">7</span>)</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input class="input" type="search" id="searchInput" placeholder="Search clients by name, owner, or setter…" aria-label="Search clients">
+        </div>
+
+        <div class="clients-grid" id="clientsGrid">
+            <!-- Client cards will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        // HARDCODED CLIENT DATA
+        const clients = [
+            {
+                businessName: "Allee Agency Inc.",
+                ownerName: "Jamie Allee",
+                ownerPhone: "970-274-3352",
+                ownerEmail: "jamie@alleeins.com",
+                website: "https://www.alleeins.com/",
+                address: "330 Mallory Station Rd. A2, TN 37067",
+                setter: "Brendan Butler",
+                licensedStates: ["AL", "AZ", "CA", "CO", "GA", "KY", "MD", "MS", "MO", "NE", "TN", "TX", "UT", "VA"],
+                targetIndustries: ["Construction", "Restaurants", "Retail - Main Street", "PROPERTY - LRO", "PRIVATE PRACTICE Doctors/Dentists"],
+                brokers: [
+                    {name: "Ryan Allee", phone: "6157175652", email: "ryan@alleeins.com"},
+                    {name: "Will Rogers", phone: "6156648321", email: "will@alleeins.com"},
+                    {name: "Jim McKee", phone: "6153770017", email: "jim@alleeins.com"},
+                    {name: "Rayneshia Dawkins", phone: "6157169945", email: "rayneshia@alleeins.com"}
+                ]
+            },
+            {
+                businessName: "Arroyo Insurance Services - South Bay",
+                ownerName: "Robert Kelly",
+                ownerPhone: "310-356-8206",
+                ownerEmail: "robertk@arroyoins.com",
+                website: "www.arroyosouthbay.com",
+                address: "5000 E Spring Street, Suite 570, Long Beach, CA 90815",
+                setter: "Brendan Butler",
+                licensedStates: ["CA"],
+                targetIndustries: ["Wholesale Distribution", "Manufacturing", "Commercial Real Estate - Industrial, Shopping Centers, Apartments, Property Managers", "Construction - Solar, Roofing, Plumbing, HVAC", "Hospitality - Restaurants, Bar/Tavern"],
+                brokers: [
+                    {name: "Robert Kelly", phone: "3103568206", email: "robertk@arroyoins.com"},
+                    {name: "Ryan McDonald", phone: "4243985624", email: "ryanm@arroyoins.com"},
+                    {name: "Seamus McDonald", phone: "3103568214", email: "seamusm@arroyoins.com"},
+                    {name: "William Dessert", phone: "3103568210", email: "williamd@arroyoins.com"}
+                ]
+            },
+            {
+                businessName: "The Bulow Group, Inc",
+                ownerName: "TOM Bulow",
+                ownerPhone: "708-906-6300",
+                ownerEmail: "tbulow@thebulowgroup.com",
+                website: "thebulowgroup.com",
+                address: "8101 183rd Street, IL 60487",
+                setter: "Brendan Butler",
+                licensedStates: ["IL"],
+                targetIndustries: ["Restaurant Groups", "Construction", "Hardware Stores", "Manufacturing/Food Distributors", "Waste Haulers & Garbage"],
+                brokers: [
+                    {name: "Nick Hogevenn", phone: "", email: ""},
+                    {name: "Tom DeMatteo", phone: "", email: ""},
+                    {name: "Bobby Daw", phone: "", email: ""},
+                    {name: "Rob Randick", phone: "", email: ""}
+                ]
+            },
+            {
+                businessName: "WEER INSURANCE AND FINANCIAL SERVICES, INC",
+                ownerName: "Scott Weer",
+                ownerPhone: "309-303-2698",
+                ownerEmail: "scott@weeryouragent.com",
+                website: "www.weeryouragent.com",
+                address: "2409 WESTWARD DR, Illinois 60081",
+                setter: "Brendan Butler",
+                licensedStates: ["IL", "IN", "WI", "OH", "FL", "CA", "TX", "GA"],
+                targetIndustries: ["Artisian & General Contractors", "Real Estate Investors - Appartment Buildings, Commercial Strip Centers, Condo Associations", "Restaurants", "Bars - only in IL & WI", "Commercial Auto"],
+                brokers: [
+                    {name: "Tiffany Trevino", phone: "8472781099 ext 104", email: "tiffany@weeryouragent.com"},
+                    {name: "Steve Gallardo", phone: "8472781099 ext 102", email: "steve@weeryouragent.com"},
+                    {name: "Sherrie Hurley", phone: "8472781099 ext", email: "sherrie@weeryouragent.com"},
+                    {name: "Kasia Biedrawa", phone: "8472781099 ext 105", email: "kasia@weeryouragent.com"}
+                ]
+            },
+            {
+                businessName: "Insurance Express",
+                ownerName: "Raymond Graceffo",
+                ownerPhone: "561-345-7332",
+                ownerEmail: "raymond@insuranceexpress.com",
+                website: "InsuranceExpress.com",
+                address: "2005 Vista Parkway Ste 200, FL 33411",
+                setter: "Brendan Butler",
+                licensedStates: ["FL", "NY"],
+                targetIndustries: ["Construction", "Manufacturing", "Commercial Auto (non-trucking)", "Commercial Strip Malls", "Commercial Residential (Apt/Condo)"],
+                brokers: [
+                    {name: "Charles Maniglia", phone: "", email: "cmaniglia@insuranceexpress.com"}
+                ]
+            },
+            {
+                businessName: "UWIB Risk Inc",
+                ownerName: "Josh Acosta",
+                ownerPhone: "615-234-0347",
+                ownerEmail: "josh@uwib.com",
+                website: "https://uwibrisk.com/",
+                address: "228 Pearl St, Franklin TN, 37064",
+                setter: "Brendan Butler",
+                licensedStates: ["TN"],
+                targetIndustries: ["Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)", "Restaurants", "Manufacturing", "Property Manager"],
+                brokers: [
+                    {name: "Eric Schirding", phone: "6265785154", email: "eschirding@uwib.com"},
+                    {name: "Jesse Nielsen", phone: "6262046983", email: "jesse@uwib.com"},
+                    {name: "David Murphy", phone: "(951) 462-2405", email: "david@uwib.com"}
+                ]
+            },
+            {
+                businessName: "Koosh Insurance",
+                ownerName: "Itay Sela",
+                ownerPhone: "954-495-6965",
+                ownerEmail: "itai@koosh-ins.com",
+                website: "www.koosh-ins.com",
+                address: "4491 S State Road 7, Suite 202, Davie, Florida 33314",
+                setter: "Brendan Butler",
+                licensedStates: ["FL"],
+                targetIndustries: ["Commercial Real Estate", "Residential Real Estate", "Restaurants", "Construction", "Hotels"],
+                brokers: [
+                    {name: "Itay Sela", phone: "9544956965", email: "itai@koosh-ins.com"}
+                ]
+            },
+            {
+                businessName: "STATE FARM - TIM MAUDSLEY AGENT",
+                ownerName: "TIMOTHY MAUDSLEY",
+                ownerPhone: "702-998-4545",
+                ownerEmail: "tim@insurancequote-nv.com",
+                website: "www.insurancequote-nv.com",
+                address: "8170 S EASTERN AVE #11 LAS VEGAS NV 89123",
+                setter: "Brendan Butler",
+                licensedStates: ["NV"],
+                targetIndustries: ["ARTISAN SERVICE CONTRACTORS", "HOMEOWNERS ASSOCIATIONS", "RESTAURANTS", "AUTO REPAIR", "LESSOR RISK - BUILDING OWNERS"],
+                brokers: [
+                    {name: "KADEN MAALOUF", phone: "7029984545", email: "KADEN.MAALOUF.VADRFZ@STATEFARM.COM"},
+                    {name: "JEREMY WINCHESTER", phone: "7029984545", email: "JEREMY.WINCHESTER.VAB79Y@STATEFARM.COM"},
+                    {name: "GABRIELA ANDRADE", phone: "7029984545", email: "GABRIELA.ANDRADE.VADYCA@STATEFARM.COM"}
+                ]
+            },
+            {
+                businessName: "Insurable, Inc.",
+                ownerName: "Brian Bortz",
+                ownerPhone: "412-244-1000",
+                ownerEmail: "bkb@insurableinc.com",
+                website: "InsurableInc.com",
+                address: "1063 Harrison City Export Road, PA 15644",
+                setter: "Brendan Butler",
+                licensedStates: ["PA"],
+                targetIndustries: ["Construction-Artisan", "Workers Comp", "Machine Shops", "Physical fitness facilities GYMS", "Auto Body and Mechanical Shops"],
+                brokers: [
+                    {name: "Sharie Castle", phone: "(412) 244-1000", email: "SCastle@InsurableInc.com"},
+                    {name: "Ron Minnich", phone: "(412) 244-1000", email: "RMinnich@InsurableInc.com"},
+                    {name: "Brian Bortz", phone: "(412) 244-1000", email: "Brian@InsurableInc.com"}
+                ]
+            },
+            {
+                businessName: "GRIT Insurance",
+                ownerName: "Kirk Chester",
+                ownerPhone: "801-948-8091",
+                ownerEmail: "Kirk@gritinsurance.com",
+                website: "www.gritinsurance.com",
+                address: "5525 S 900 E Ste 345, UT 84117",
+                setter: "Jacques Lebleu",
+                licensedStates: ["UT", "ID", "CO", "AZ", "TX", "OR", "WA", "CA", "MT", "NV", "ND", "WY"],
+                targetIndustries: ["Commercial Contractors", "Landscape Contractors", "Excavation Contractors", "Manufacturing"],
+                brokers: [
+                    {name: "Kirk Chester", phone: "801-948-8091", email: "Kirk@gritinsurance.com"},
+                    {name: "Justin Peterson", phone: "801-948-8090", email: "Justin@gritinsurance.com"},
+                    {name: "Easton Rentmeister", phone: "801-948-8092", email: "Easton@gritinsurance.com"}
+                ]
+            },
+            {
+                businessName: "Gerety Insurance",
+                ownerName: "Rick Gerety",
+                ownerPhone: "410-803-2600",
+                ownerEmail: "rick@geretyinsurance.com",
+                website: "www.geretyinsurance.com",
+                address: "406 N Hickory Ave, Bel Air, MD 21014",
+                setter: "Jacques Lebleu",
+                licensedStates: ["DE", "MD", "PA", "VA"],
+                targetIndustries: ["Construction", "Restaurants", "Manufacturing", "Local Trucking", "Technology"],
+                brokers: [
+                    {name: "Sully Gerety", phone: "443-686-1115", email: "sully@geretyinsurance.com"},
+                    {name: "Cindy Dotson", phone: "443-827-9024", email: "cindy@geretyinsurance.com"}
+                ]
+            },
+            {
+                businessName: "IMD INSURANCE & Financial Services LLC",
+                ownerName: "Jason Jimenez",
+                ownerPhone: "832-754-7808",
+                ownerEmail: "jason@imdins.com",
+                website: "www.imdins.com",
+                address: "8323 SOUTHWEST FREEWAY, Texas 77074",
+                setter: "Jacques Lebleu",
+                licensedStates: ["TX", "IL", "CA"],
+                targetIndustries: ["Construction", "R.E Investors Commercial (Multifamily)", "Professional Services - Attorneys", "MSP's", "Restaurants"],
+                brokers: [
+                    {name: "Jose Aleman", phone: "+50584758462", email: "jose@imdins.com"},
+                    {name: "Marlon Hazsuel", phone: "+50558105735", email: "marlon@imdins.com"}
+                ]
+            },
+            {
+                businessName: "PRIME INSURANCE SERVICES",
+                ownerName: "MIN CHOI",
+                ownerPhone: "201-285-4123",
+                ownerEmail: "MIN@PRIMEISERVICES.COM",
+                website: "www.primeiservices.com",
+                address: "180 Old Tappan Rd. Unit 4203, Old Tappan, NJ 07675",
+                setter: "Jacques Lebleu",
+                licensedStates: ["NJ", "NY", "PA", "TX", "CA", "CT", "FL"],
+                targetIndustries: ["CONSTRUCTION", "RESTAURANTS", "BUILDINGS / LESSORS RISK", "WHOLESALER/MFG", "Builder's Risk"],
+                brokers: [
+                    {name: "MIN CHOI", phone: "2012854123", email: "MIN@PRIMEISERVICES.COM"}
+                ]
+            },
+            {
+                businessName: "Ingram Insurance Agency, LLC",
+                ownerName: "Chris Ingram",
+                ownerPhone: "615-557-5436",
+                ownerEmail: "chris@theingramagency.com",
+                website: "www.theingramagency.com",
+                address: "105 Glen Oak Blvd. Suite 200 Hendersonville, TN 37075",
+                setter: "Jacques Lebleu",
+                licensedStates: ["NH", "UT", "WY", "AL", "AR", "DE", "FL", "GA", "ID", "IL", "IN", "IA", "KY", "MD", "MN", "MS", "NV", "OH", "OK", "OR", "PA", "SC", "TN", "TX", "VA", "WA", "CO"],
+                targetIndustries: ["Artisan Contractor, NO General Contractors", "Restaurants", "Professional Services - anything in an office", "HVAC/ELEC/PLUMBING Contractors", "WORK COMP - All classes"],
+                brokers: [
+                    {name: "Chris Ingram", phone: "615-675-5154", email: ""}
+                ]
+            },
+            {
+                businessName: "Premier Group Insurance",
+                ownerName: "Jim Langen",
+                ownerPhone: "219-695-3031",
+                ownerEmail: "jlangen@premiergrpins.com",
+                website: "www.premiergrpins.com",
+                address: "829 East Commercial Ave Lowell, Indiana 46356",
+                setter: "Jacques Lebleu",
+                licensedStates: ["IN", "IL", "OH"],
+                targetIndustries: ["Construction (1-10)", "Restaurants (Bars)", "Retail (Mom & Pop)", "Condo Association"],
+                brokers: [
+                    {name: "Michael Langen", phone: "219-695-3034", email: "mlangen@premiergrpins.com"},
+                    {name: "James Langen", phone: "219-695-3044", email: "jwlangen@premiergrpins.com"},
+                    {name: "Tai Cruise", phone: "219-695-3043", email: "tcruise@premiergrpins.com"},
+                    {name: "Jim Snedeker", phone: "219-266-2382", email: "jsnedeker@premiergrpins.com"}
+                ]
+            },
+            {
+                businessName: "Eastman Risk Advisors",
+                ownerName: "Coltan Eastman",
+                ownerPhone: "801-888-0550",
+                ownerEmail: "Coltan@Eastmanrisk.com",
+                website: "www.eastmanrisk.com",
+                address: "270 E 200 S, Clearfield, UT 84015, USA",
+                setter: "Jacques Lebleu",
+                licensedStates: ["UT"],
+                targetIndustries: ["Commercial property", "Electricians", "Plumbers", "HVAC", "Lube/oil shops"],
+                brokers: [
+                    {name: "Caleb Beickel", phone: "8018880550", email: "Caleb@Eastmanrisk.com"},
+                    {name: "Maddy Beickel", phone: "8018880550", email: "Maddy@Eastmanrisk.com"},
+                    {name: "Isabella Brown", phone: "8018880550", email: "Bella@Eastmanrisk.com"},
+                    {name: "Mari Higuera", phone: "8018880550", email: "Mari@Eastmanrisk.com"}
+                ]
+            }
+        ];
+
+        // ============= NOTES STORE (localStorage) =============
+        const NOTES_STORAGE_KEY = 'clientNotes';
+
+        // Get all notes from localStorage
+        function getAllNotes() {
+            const stored = localStorage.getItem(NOTES_STORAGE_KEY);
+            return stored ? JSON.parse(stored) : {};
+        }
+
+        // Get notes for a specific client
+        function getClientNotes(clientId) {
+            const allNotes = getAllNotes();
+            return allNotes[clientId] || { summary: '', items: [] };
+        }
+
+        // Save a new note for a client
+        function saveNote(clientId, note) {
+            const allNotes = getAllNotes();
+
+            if (!allNotes[clientId]) {
+                allNotes[clientId] = { summary: '', items: [] };
+            }
+
+            // Add new note with timestamp and unique ID
+            const newNote = {
+                id: Date.now().toString(),
+                author: note.author,
+                type: note.type,
+                text: note.text,
+                timestamp: new Date().toISOString(),
+                source: note.source || 'Manual Entry'
+            };
+
+            allNotes[clientId].items.push(newNote);
+
+            // Regenerate summary
+            allNotes[clientId].summary = generateSummary(allNotes[clientId].items);
+
+            // Save to localStorage
+            localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(allNotes));
+
+            return newNote;
+        }
+
+        // Generate a concise summary from notes
+        function generateSummary(noteItems) {
+            if (!noteItems || noteItems.length === 0) return '';
+
+            // Get the most recent 2-3 notes
+            const recentNotes = noteItems.slice(-3).reverse();
+
+            // Create a brief summary
+            const summaries = recentNotes.map(note => {
+                const preview = note.text.length > 60 ? note.text.substring(0, 60) + '...' : note.text;
+                return `${note.type}: ${preview}`;
+            });
+
+            return summaries.join(' • ');
+        }
+
+        // Sort by setter name, then by business name
+        clients.sort((a, b) => {
+            if (a.setter !== b.setter) {
+                return a.setter.localeCompare(b.setter);
+            }
+            return a.businessName.localeCompare(b.businessName);
+        });
+
+        // USPS state abbreviations mapping
+        const STATE_ABBR_MAP = {
+            'alabama': 'AL', 'alaska': 'AK', 'arizona': 'AZ', 'arkansas': 'AR', 'california': 'CA',
+            'colorado': 'CO', 'connecticut': 'CT', 'delaware': 'DE', 'florida': 'FL', 'georgia': 'GA',
+            'hawaii': 'HI', 'idaho': 'ID', 'illinois': 'IL', 'indiana': 'IN', 'iowa': 'IA',
+            'kansas': 'KS', 'kentucky': 'KY', 'louisiana': 'LA', 'maine': 'ME', 'maryland': 'MD',
+            'massachusetts': 'MA', 'michigan': 'MI', 'minnesota': 'MN', 'mississippi': 'MS', 'missouri': 'MO',
+            'montana': 'MT', 'nebraska': 'NE', 'nevada': 'NV', 'new hampshire': 'NH', 'new jersey': 'NJ',
+            'new mexico': 'NM', 'new york': 'NY', 'north carolina': 'NC', 'north dakota': 'ND', 'ohio': 'OH',
+            'oklahoma': 'OK', 'oregon': 'OR', 'pennsylvania': 'PA', 'rhode island': 'RI', 'south carolina': 'SC',
+            'south dakota': 'SD', 'tennessee': 'TN', 'texas': 'TX', 'utah': 'UT', 'vermont': 'VT',
+            'virginia': 'VA', 'washington': 'WA', 'west virginia': 'WV', 'wisconsin': 'WI', 'wyoming': 'WY'
+        };
+
+        // Normalization functions
+        function isAcronym(word) {
+            // Preserve words ≥3 letters that are all caps
+            return word.length >= 3 && word === word.toUpperCase() && /^[A-Z]+$/.test(word);
+        }
+
+        function smartTitleCase(str) {
+            return str.replace(/\b\w+\b/g, word => {
+                // Preserve acronyms and suffixes
+                if (isAcronym(word)) return word;
+                // Preserve common suffixes
+                if (['LLC', 'LLP', 'INC', 'CORP', 'LTD', 'PC', 'LP', 'DBA'].includes(word.toUpperCase())) {
+                    return word.toUpperCase();
+                }
+                // Title case for regular words
+                return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+        }
+
+        function normalizeAddress(addr) {
+            if (!addr) return '';
+            // Keep USPS abbreviations, don't modify ZIP codes
+            // Just trim extra spaces and normalize comma spacing
+            return addr.replace(/\s*,\s*/g, ', ')
+                      .replace(/\s{2,}/g, ' ')
+                      .trim();
+        }
+
+        function normalizeStateName(state) {
+            const normalized = state.trim().toLowerCase();
+            return STATE_ABBR_MAP[normalized] || state.trim().toUpperCase();
+        }
+
+        function normalizeLicensedStates(states) {
+            return states.map(normalizeStateName).join(', ');
+        }
+
+        function normalizeTargets(targetArray) {
+            return targetArray.map(target => {
+                // Preserve acronyms, apply smart sentence case
+                return target.split(/\b/).map(part => {
+                    const word = part.trim();
+                    if (!word) return part;
+                    if (isAcronym(word)) return word;
+                    if (/^[A-Za-z]+$/.test(word)) {
+                        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                    }
+                    return part;
+                }).join('');
+            });
+        }
+
+        // Helper to get initials from name
+        function getInitials(name) {
+            if (!name) return '?';
+            const parts = name.trim().split(' ');
+            if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
+            return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        }
+
+        // Popover toggle for team members
+        function wireTeamPopover(btnId, popId) {
+            const btn = document.getElementById(btnId);
+            const pop = document.getElementById(popId);
+            if (!btn || !pop) return;
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const willOpen = pop.hasAttribute('hidden');
+                document.querySelectorAll('.popover').forEach(p => p.setAttribute('hidden', ''));
+                pop.toggleAttribute('hidden', !willOpen);
+                btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!pop.contains(e.target) && !btn.contains(e.target)) {
+                    pop.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    pop.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.focus();
+                }
+            });
+        }
+
+        function renderClients(clientsToRender = clients) {
+            const grid = document.getElementById('clientsGrid');
+
+            if (clientsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 15px;">
+                        <h3>No clients found</h3>
+                        <p>Try adjusting your search.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = clientsToRender.map((client, index) => {
+                const cardId = `card-${index}`;
+                const teamBtnId = `teamBtn-${index}`;
+                const teamPopId = `teamPop-${index}`;
+
+                // Normalize data
+                const businessName = smartTitleCase(client.businessName);
+                const address = normalizeAddress(client.address);
+                const licensedStates = normalizeLicensedStates(client.licensedStates);
+                const targets = normalizeTargets(client.targetIndustries);
+
+                // Determine setter attribute
+                const setterAttr = client.setter.toLowerCase().includes('brendan') ? 'brendan' : 'jacques';
+
+                return `
+                    <div class="client-card" id="${cardId}" data-setter="${setterAttr}" data-client-id="${client.businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}">
+                        <header class="card-head">
+                            <div class="card-head-left">
+                                <h2 class="business-name">${businessName}</h2>
+                                ${address ? `<div class="info-line address">📍 ${address}</div>` : ''}
+                                ${client.timezone ? `<div class="timezone-info">${client.timezone}</div>` : ''}
+                            </div>
+                            <div class="card-head-right">
+                                <div class="owner-block">
+                                    ${client.ownerName ? `<div>${client.ownerName}</div>` : ''}
+                                    ${client.ownerPhone ? `<div>${client.ownerPhone}</div>` : ''}
+                                    ${client.ownerEmail ? `<div>${client.ownerEmail}</div>` : ''}
+                                </div>
+                                ${client.brokers.length > 0 ? `
+                                    <div class="team-control">
+                                        <button class="btn btn-ghost" id="${teamBtnId}" type="button" aria-haspopup="true" aria-expanded="false">
+                                            <span class="chev">▾</span>
+                                            <span>Team</span>
+                                            <span class="badge">${client.brokers.length}</span>
+                                        </button>
+                                        <div class="popover" id="${teamPopId}" hidden>
+                                            ${client.brokers.map(broker => `
+                                                <div class="popover-item">
+                                                    <div class="avatar">${getInitials(broker.name)}</div>
+                                                    <div>
+                                                        <div class="team-member-name">${broker.name}</div>
+                                                        ${broker.phone ? `<div class="team-member-contact">${broker.phone}</div>` : ''}
+                                                        ${broker.email ? `<div class="team-member-contact">${broker.email}</div>` : ''}
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                                <button class="btn btn-ghost btn-notes" data-card-id="${cardId}" type="button" title="Add update note">
+                                    <span>📝</span>
+                                    <span>Update notes</span>
+                                </button>
+                            </div>
+                        </header>
+
+                        <div class="client-info">
+                            ${targets.length > 0 ? `
+                                <div class="targets-section">
+                                    <div class="section-label">🎯 Target Industries</div>
+                                    <ul class="targets">
+                                        ${targets.map(t => `<li>${t}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+
+                            ${licensedStates ? `
+                                <div class="licensed-section">
+                                    <div class="section-label">🗺️ Licensed States</div>
+                                    <p class="licensed">${licensedStates}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <div class="client-notes" id="notes-${cardId}">
+                            <!-- Notes will be rendered here dynamically -->
+                        </div>
+
+                        <div class="card-footer">
+                            <div></div>
+                            <div class="setter-badge">
+                                <span class="setter-label">📞 ${client.setter}</span>
+                                <span class="ghl-number">GHL: [TBD]</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Wire up all team popovers and render notes
+            clientsToRender.forEach((client, index) => {
+                if (client.brokers.length > 0) {
+                    wireTeamPopover(`teamBtn-${index}`, `teamPop-${index}`);
+                }
+
+                // Render notes for this card
+                const cardId = `card-${index}`;
+                const clientId = client.businessName
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/^-|-$/g, '');
+                renderNotes(cardId, clientId);
+            });
+        }
+
+        // Filter functionality
+        let activeFilter = 'all';
+
+        function applyFilter(filter) {
+            activeFilter = filter;
+            const cards = document.querySelectorAll('.client-card');
+
+            cards.forEach(card => {
+                const setter = card.getAttribute('data-setter');
+                if (filter === 'all') {
+                    card.style.display = '';
+                } else {
+                    card.style.display = setter === filter ? '' : 'none';
+                }
+            });
+
+            updatePillCounts();
+            updateActivePill(filter);
+        }
+
+        function updatePillCounts() {
+            const cards = document.querySelectorAll('.client-card');
+            let brendanCount = 0;
+            let jacquesCount = 0;
+
+            cards.forEach(card => {
+                if (card.style.display !== 'none') {
+                    const setter = card.getAttribute('data-setter');
+                    if (setter === 'brendan') brendanCount++;
+                    if (setter === 'jacques') jacquesCount++;
+                }
+            });
+
+            document.getElementById('count-brendan').textContent = brendanCount;
+            document.getElementById('count-jacques').textContent = jacquesCount;
+        }
+
+        function updateActivePill(filter) {
+            document.querySelectorAll('.pill').forEach(p => {
+                p.classList.remove('active');
+                p.setAttribute('aria-selected', 'false');
+            });
+            const activePill = document.getElementById(`pill-${filter}`);
+            activePill.classList.add('active');
+            activePill.setAttribute('aria-selected', 'true');
+        }
+
+        // Pill event listeners
+        document.getElementById('pill-all').addEventListener('click', () => applyFilter('all'));
+        document.getElementById('pill-brendan').addEventListener('click', () => applyFilter('brendan'));
+        document.getElementById('pill-jacques').addEventListener('click', () => applyFilter('jacques'));
+
+        // Keyboard navigation for pills
+        const pills = document.querySelectorAll('.pill');
+        const pillsContainer = document.querySelector('.pills');
+
+        pillsContainer.addEventListener('keydown', (e) => {
+            const currentPill = document.activeElement;
+            if (!currentPill.classList.contains('pill')) return;
+
+            const pillArray = Array.from(pills);
+            const currentIndex = pillArray.indexOf(currentPill);
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                let nextIndex;
+                if (e.key === 'ArrowRight') {
+                    nextIndex = (currentIndex + 1) % pillArray.length;
+                } else {
+                    nextIndex = (currentIndex - 1 + pillArray.length) % pillArray.length;
+                }
+                pillArray[nextIndex].focus();
+                pillArray[nextIndex].click();
+            }
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            if (!searchTerm) {
+                renderClients(clients);
+                applyFilter(activeFilter); // Reapply current filter
+                return;
+            }
+
+            const filtered = clients.filter(client => {
+                return client.businessName.toLowerCase().includes(searchTerm) ||
+                       client.ownerName.toLowerCase().includes(searchTerm) ||
+                       client.setter.toLowerCase().includes(searchTerm) ||
+                       (client.ownerEmail && client.ownerEmail.toLowerCase().includes(searchTerm)) ||
+                       (client.ownerPhone && client.ownerPhone.includes(searchTerm));
+            });
+
+            renderClients(filtered);
+            applyFilter(activeFilter); // Reapply current filter to search results
+        });
+
+        // ============= NOTES MODAL FUNCTIONALITY =============
+        let currentClientId = null;
+
+        // Open note modal
+        function openNoteModal(cardId) {
+            const card = document.getElementById(cardId);
+            currentClientId = card.getAttribute('data-client-id');
+
+            const modal = document.getElementById('noteModal');
+            modal.removeAttribute('hidden');
+            document.getElementById('noteType').focus();
+        }
+
+        // Close note modal
+        function closeNoteModal() {
+            const modal = document.getElementById('noteModal');
+            modal.setAttribute('hidden', '');
+            document.getElementById('noteForm').reset();
+            currentClientId = null;
+        }
+
+        // Open history modal
+        window.openHistoryModal = function(clientId) {
+            const notes = getClientNotes(clientId);
+            const historyContent = document.getElementById('historyContent');
+
+            if (notes.items.length === 0) {
+                historyContent.innerHTML = '<p style="text-align: center; color: var(--text-dim); padding: 20px;">No notes yet</p>';
+            } else {
+                historyContent.innerHTML = notes.items
+                    .slice()
+                    .reverse()
+                    .map(note => `
+                        <div class="history-item">
+                            <div class="history-header">
+                                <span class="history-type">${note.type}</span>
+                                <span class="history-date">${new Date(note.timestamp).toLocaleDateString()}</span>
+                            </div>
+                            <div class="history-author">${note.author}</div>
+                            <div class="history-text">${note.text}</div>
+                        </div>
+                    `).join('');
+            }
+
+            const modal = document.getElementById('historyModal');
+            modal.removeAttribute('hidden');
+        };
+
+        // Close history modal
+        function closeHistoryModal() {
+            const modal = document.getElementById('historyModal');
+            modal.setAttribute('hidden', '');
+        }
+
+        // Render notes section for a card
+        function renderNotes(cardId, clientId) {
+            const notes = getClientNotes(clientId);
+            const notesContainer = document.getElementById(`notes-${cardId}`);
+
+            if (!notesContainer) return; // Safety check
+
+            if (!notes.items || notes.items.length === 0) {
+                notesContainer.innerHTML = '';
+                return;
+            }
+
+            notesContainer.innerHTML = `
+                <div class="notes-section">
+                    <div class="notes-header">
+                        <span class="notes-title">Client Notes</span>
+                        <button type="button" class="btn-link" onclick="openHistoryModal('${clientId}')">View history (${notes.items.length})</button>
+                    </div>
+                    <div class="notes-summary">${notes.summary}</div>
+                </div>
+            `;
+        }
+
+        // Event: Update notes buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.btn-notes')) {
+                const btn = e.target.closest('.btn-notes');
+                const cardId = btn.getAttribute('data-card-id');
+                openNoteModal(cardId);
+            }
+        });
+
+        // Event: Close modal buttons
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeNoteModal();
+                closeHistoryModal();
+            });
+        });
+
+        document.getElementById('noteCancelBtn').addEventListener('click', closeNoteModal);
+        document.getElementById('historyCloseBtn').addEventListener('click', closeHistoryModal);
+
+        // Event: Close modals on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', () => {
+                closeNoteModal();
+                closeHistoryModal();
+            });
+        });
+
+        // Event: Close modals on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeNoteModal();
+                closeHistoryModal();
+            }
+        });
+
+        // Event: Submit note form (also handle Cmd/Ctrl+Enter)
+        document.getElementById('noteForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(e.target);
+            const note = {
+                type: formData.get('type'),
+                author: formData.get('author'),
+                text: formData.get('text')
+            };
+
+            saveNote(currentClientId, note);
+
+            // Re-render the notes for this client's card
+            const card = document.querySelector(`[data-client-id="${currentClientId}"]`);
+            const cardId = card.id;
+            renderNotes(cardId, currentClientId);
+
+            closeNoteModal();
+        });
+
+        // Event: Cmd/Ctrl+Enter to submit
+        document.getElementById('noteText').addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('noteForm').dispatchEvent(new Event('submit'));
+            }
+        });
+
+        // Initial render
+        renderClients();
+        applyFilter('all');
+    </script>
+
+    <!-- Add Note Modal -->
+    <div id="noteModal" class="modal" hidden>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Update Note</h3>
+                <button class="modal-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <form id="noteForm" class="modal-body">
+                <div class="form-group">
+                    <label for="noteType">Type</label>
+                    <select id="noteType" name="type" required>
+                        <option value="">Select type...</option>
+                        <option value="Call">Call</option>
+                        <option value="Email">Email</option>
+                        <option value="Meeting">Meeting</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noteAuthor">Author</label>
+                    <input type="text" id="noteAuthor" name="author" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="noteText">Notes</label>
+                    <textarea id="noteText" name="text" rows="6" placeholder="Enter your update notes..." required></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="noteCancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View History Modal -->
+    <div id="historyModal" class="modal" hidden>
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Note History</h3>
+                <button class="modal-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="historyContent" class="history-list">
+                    <!-- History items will be rendered here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="historyCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

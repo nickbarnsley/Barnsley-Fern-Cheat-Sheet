@@ -1,0 +1,153 @@
+[
+  {
+    "client": "WEER INSURANCE AND FINANCIAL SERVICES, INC",
+    "status": "MATCHED",
+    "states": {
+      "before": [
+        "CA",
+        "FL",
+        "GA",
+        "IL",
+        "IN",
+        "OH",
+        "TX",
+        "WI"
+      ],
+      "after": [
+        "CA",
+        "FL",
+        "GA",
+        "IL",
+        "IN",
+        "OH",
+        "TX",
+        "WI",
+        "WISCONSIN"
+      ],
+      "additions": [
+        "WISCONSIN"
+      ]
+    },
+    "industries": {
+      "before": [
+        "Artisian & General Contractors",
+        "Real Estate Investors - Appartment Buildings, Commercial Strip Centers, Condo Associations",
+        "Restaurants",
+        "Bars - only in IL & WI",
+        "Commercial Auto"
+      ],
+      "after": [
+        "Artisian & General Contractors",
+        "Real Estate Investors - Appartment Buildings, Commercial Strip Centers, Condo Associations",
+        "Restaurants",
+        "Bars - only in IL & WI",
+        "Commercial Auto",
+        "Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations"
+      ],
+      "additions": [
+        "Real Estate Investors - Appartment Buildings, Commercail Strip Centers, Condo Associations"
+      ]
+    },
+    "brokers": {
+      "before": [
+        "Tiffany Trevino",
+        "Steve Gallardo",
+        "Sherrie Hurley",
+        "Kasia Biedrawa"
+      ],
+      "after": [
+        "Tiffany Trevino",
+        "Steve Gallardo",
+        "Sherrie Hurley",
+        "Kasia Biedrawa"
+      ],
+      "additions": []
+    }
+  },
+  {
+    "client": "Koosh Insurance",
+    "status": "MATCHED",
+    "states": {
+      "before": [
+        "FL"
+      ],
+      "after": [
+        "FL"
+      ],
+      "additions": []
+    },
+    "industries": {
+      "before": [
+        "Commercial Real Estate",
+        "Residential Real Estate",
+        "Restaurants",
+        "Construction",
+        "Hotels"
+      ],
+      "after": [
+        "Commercial Real Estate",
+        "Residential Real Estate",
+        "Restaurants",
+        "Construction",
+        "Hotels",
+        "Residental Real Estate"
+      ],
+      "additions": [
+        "Residental Real Estate"
+      ]
+    },
+    "brokers": {
+      "before": [
+        "Itay Sela"
+      ],
+      "after": [
+        "Itay Sela"
+      ],
+      "additions": []
+    }
+  },
+  {
+    "client": "UWIB Risk Inc",
+    "status": "MATCHED",
+    "states": {
+      "before": [
+        "TN"
+      ],
+      "after": [
+        "TN"
+      ],
+      "additions": []
+    },
+    "industries": {
+      "before": [
+        "Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)",
+        "Restaurants",
+        "Manufacturing",
+        "Property Manager"
+      ],
+      "after": [
+        "Artisan Contractors (HVAC, Plumbing, Electrical, Roofing, Etc)",
+        "Restaurants",
+        "Manufacturing",
+        "Property Manager",
+        "Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)"
+      ],
+      "additions": [
+        "Artisan Contractors (HVAC, Plumbing, Eletrical, Roofing, Etc)"
+      ]
+    },
+    "brokers": {
+      "before": [
+        "Eric Schirding",
+        "Jesse Nielsen",
+        "David Murphy"
+      ],
+      "after": [
+        "Eric Schirding",
+        "Jesse Nielsen",
+        "David Murphy"
+      ],
+      "additions": []
+    }
+  }
+]
