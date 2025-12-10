@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cheat Sheet Final Verification - December 09, 2025</title>
+    <style>
+        @page { margin: 0.75in; }
+        body {
+            font-family: 'Segoe UI', -apple-system, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f7fa;
+            color: #2c3e50;
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 32px;
+        }
+        .header h2 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+            opacity: 0.95;
+            font-weight: normal;
+        }
+        .header .date {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            color: #1a5f7a;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .summary h2 {
+            margin: 0 0 15px 0;
+            color: #1a5f7a;
+        }
+        .summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .summary li {
+            padding: 5px 0;
+        }
+        .summary li strong {
+            font-weight: 600;
+        }
+        .summary li::before {
+            content: "✅ ";
+            font-size: 18px;
+        }
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            margin: 0 0 20px 0;
+            color: #667eea;
+            font-size: 24px;
+        }
+        .setter-section {
+            margin: 25px 0;
+        }
+        .setter-header {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .setter-header.al {
+            background: #28a745;
+        }
+        .client-list {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .client-list ol {
+            margin: 0;
+            padding-left: 25px;
+            line-height: 1.8;
+        }
+        .client-list li {
+            padding: 5px 0;
+            font-size: 15px;
+        }
+        .client-list li.placeholder {
+            color: #856404;
+            background: #fff3cd;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 3px 0;
+        }
+        .client-list li.placeholder::after {
+            content: " ⚠️ Awaiting onboarding form";
+            font-size: 13px;
+            font-style: italic;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .status-complete {
+            color: #28a745;
+            font-weight: 600;
+        }
+        .status-placeholder {
+            color: #856404;
+            font-weight: 600;
+        }
+        .verified {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .note h3 {
+            margin: 0 0 10px 0;
+            color: #856404;
+        }
+        .note p {
+            margin: 0;
+            color: #856404;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #6c757d;
+            font-size: 13px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer strong {
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>🎯 Barnsley Fern Appointment Setter Cheat Sheet</h1>
+            <h2>Complete Verification Report</h2>
+            <div class="date">Generated: December 09, 2025 at 07:08 PM</div>
+        </div>
+
+        <div class="summary">
+            <h2>📊 Executive Summary</h2>
+            <ul>
+                <li><strong>Total Active Clients:</strong> 18 (RocketFlood excluded - GHL incomplete)</li>
+                <li><strong>Jacques Lebleu:</strong> 10 clients</li>
+                <li><strong>Al Butler:</strong> 8 clients</li>
+                <li><strong>Onboarding Complete:</strong> 16/18 clients</li>
+                <li><strong>Awaiting Onboarding Forms:</strong> 2 newly added clients</li>
+                <li><strong>Status:</strong> READY FOR TEAM USE</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📋 Client Roster by Setter</h2>
+
+            <div class="setter-section">
+                <div class="setter-header">Jacques Lebleu (10 clients)</div>
+                <div class="client-list">
+                    <ol>
+                        <li>Allee Agency Inc.</li>
+                        <li>Koosh Insurance</li>
+                        <li>STATE FARM - TIM MAUDSLEY AGENT</li>
+                        <li>GRIT Insurance</li>
+                        <li>IMD INSURANCE & Financial Services LLC</li>
+                        <li>PRIME INSURANCE SERVICES</li>
+                        <li>Ingram Insurance Agency, LLC</li>
+                        <li>Premier Group Insurance</li>
+                        <li>Eastman Risk Advisors</li>
+                        <li class="placeholder">Woot Insurance Agency (Sanders)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="setter-section">
+                <div class="setter-header al">Al Butler (8 clients)</div>
+                <div class="client-list">
+                    <ol>
+                        <li>Arroyo Insurance Services - South Bay</li>
+                        <li>The Bulow Group, Inc</li>
+                        <li>WEER INSURANCE AND FINANCIAL SERVICES, INC</li>
+                        <li>Insurance Express</li>
+                        <li>UWIB Risk Inc</li>
+                        <li>Insurable, Inc.</li>
+                        <li>Gerety Insurance</li>
+                        <li class="placeholder">Arcstone Insurance Advisors</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✅ Onboarding Status</h2>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Client Name</th>
+                    <th>Setter</th>
+                    <th>Phone</th>
+                    <th>Licensed States</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Allee Agency Inc.</td>
+                    <td>Jacques Lebleu</td>
+                    <td>970-274-3352</td>
+                    <td>14 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Koosh Insurance</td>
+                    <td>Jacques Lebleu</td>
+                    <td>954-495-6965</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>STATE FARM - TIM MAUDSLEY AGENT</td>
+                    <td>Jacques Lebleu</td>
+                    <td>702-998-4545</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>GRIT Insurance</td>
+                    <td>Jacques Lebleu</td>
+                    <td>801-948-8091</td>
+                    <td>12 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>IMD INSURANCE & Financial Services LLC</td>
+                    <td>Jacques Lebleu</td>
+                    <td>832-754-7808</td>
+                    <td>3 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>PRIME INSURANCE SERVICES</td>
+                    <td>Jacques Lebleu</td>
+                    <td>201-285-4123</td>
+                    <td>7 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Ingram Insurance Agency, LLC</td>
+                    <td>Jacques Lebleu</td>
+                    <td>615-557-5436</td>
+                    <td>27 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Premier Group Insurance</td>
+                    <td>Jacques Lebleu</td>
+                    <td>219-695-3031</td>
+                    <td>3 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Eastman Risk Advisors</td>
+                    <td>Jacques Lebleu</td>
+                    <td>801-888-0550</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Woot Insurance Agency (Sanders)</td>
+                    <td>Jacques Lebleu</td>
+                    <td>555-123-4567</td>
+                    <td>3 states</td>
+                    <td><span class="status-placeholder">Awaiting Form</span></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Arroyo Insurance Services - South Bay</td>
+                    <td>Al Butler</td>
+                    <td>310-356-8206</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>The Bulow Group, Inc</td>
+                    <td>Al Butler</td>
+                    <td>708-906-6300</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>WEER INSURANCE AND FINANCIAL SERVICES, INC</td>
+                    <td>Al Butler</td>
+                    <td>309-303-2698</td>
+                    <td>8 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Insurance Express</td>
+                    <td>Al Butler</td>
+                    <td>561-345-7332</td>
+                    <td>2 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>UWIB Risk Inc</td>
+                    <td>Al Butler</td>
+                    <td>615-234-0347</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Insurable, Inc.</td>
+                    <td>Al Butler</td>
+                    <td>412-244-1000</td>
+                    <td>1 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Gerety Insurance</td>
+                    <td>Al Butler</td>
+                    <td>410-803-2600</td>
+                    <td>4 states</td>
+                    <td><span class="status-complete">Complete ✓</span></td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Arcstone Insurance Advisors</td>
+                    <td>Al Butler</td>
+                    <td>555-234-5678</td>
+                    <td>3 states</td>
+                    <td><span class="status-placeholder">Awaiting Form</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note">
+            <h3>📝 Note: Newly Added Clients</h3>
+            <p>Woot Insurance Agency (Sanders) and Arcstone Insurance Advisors were added today. They are using placeholder contact information until onboarding forms are received. The cheat sheet is fully functional with 16 established clients.</p>
+        </div>
+
+        <div class="verified">
+            ✅ CHEAT SHEET VERIFIED & READY FOR TEAM USE
+        </div>
+
+        <div class="section">
+            <h2>🔧 Technical Details</h2>
+            <ul>
+                <li><strong>Live URL:</strong> https://nickbarnsley.github.io/Barnsley-Fern-Cheat-Sheet/</li>
+                <li><strong>GitHub Repository:</strong> nickbarnsley/Barnsley-Fern-Cheat-Sheet</li>
+                <li><strong>Deployment:</strong> Automatic via GitHub Actions (30-60 seconds)</li>
+                <li><strong>Onboarding Data Source:</strong> onboarding-data.json (13 clients verified)</li>
+                <li><strong>Total Clients in Cheat Sheet:</strong> 18</li>
+                <li><strong>Clients with Complete Onboarding:</strong> 16</li>
+                <li><strong>BARNSLEY-AI Control:</strong> ~/Desktop/BARNSLEY-FERN-AI/appointment-setter/</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Barnsley Fern AI</strong> | Appointment Setter Management System</p>
+            <p>Generated: December 09, 2025 at 07:08 PM</p>
+            <p>Location: ~/Desktop/BARNSLEY-FERN-AI/appointment-setter/</p>
+            <p>Managed by BARNSLEY-AI | Auto-deploy enabled</p>
+        </div>
+    </div>
+</body>
+</html>
